@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{4e524608-a94e-437e-8250-6efe4c9e4bee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Xtreme">
+      <UniqueIdentifier>{2cb13802-f318-482f-a488-e011cc9d6a8e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanFont.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanLineCache.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanPixelShader.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanQuadCache.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanRenderer.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanTexture.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanTriangleCache.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanVertexBuffer.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanVertexShader.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="VulkanRendererDll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\XBasicFont.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\XBasicRenderer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\XBasicVertexBuffer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\XMesh.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ContextDescriptor.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GDIPage.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GfxPage.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\Image.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageData.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\IO\FileStream.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\XBoundingBox.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\Palette.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Math\MathUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Memory\ByteBuffer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Memory\MemoryStream.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Misc\Misc.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\String\Convert.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\String\Path.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Misc\Format.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GFXHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Lang\RefCountObject.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Lang\Service.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanFont.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanLineCache.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanPixelShader.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanQuadCache.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanRenderer.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanTexture.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanTriangleCache.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanVertexBuffer.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanVertexShader.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\XBasicFont.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\XBasicRenderer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\XBasicVertexBuffer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\XMesh.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ContextDescriptor.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GDIPage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GfxPage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\Image.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageData.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\IO\FileStream.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\IO\FileUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\XBoundingBox.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\Palette.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Math\MathUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Memory\ByteBuffer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Memory\MemoryStream.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Misc\Misc.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\String\Convert.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\String\Path.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Misc\format.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GFXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\DateTime\DateTime.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Lang\RefCountObject.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Lang\Service.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

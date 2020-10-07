@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{e6e5cfe0-bd72-49e4-be1e-bcc6b8ddff40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Xtreme">
+      <UniqueIdentifier>{cbeb340b-c1f5-40b6-8c9c-765434342fb3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DDrawRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\Animation.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Memory\ByteBuffer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ContextDescriptor.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="p:\Common\String\Convert.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\IO\FileStream.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="p:\Common\Misc\Format.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GFXHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GfxPage.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\Image.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Misc\Misc.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\Palette.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="p:\Common\String\Path.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="p:\Common\Lang\RefCountObject.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\RLEList.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Lang\Service.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="p:\Common\String\XML.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\DDraw\DDrawRenderClass.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\DDraw\DDrawTexture.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\X2dFont.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="p:\Common\Xtreme\XAsset\XAssetLoader.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\XBasic2dRenderer.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="p:\Common\Xtreme\Xtreme2d\XMultiTexture2d.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageData.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GDIPage.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\DDrawPage.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="P:\Common\Grafik\Animation.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Memory\ByteBuffer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ContextDescriptor.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="p:\Common\String\Convert.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\IO\FileStream.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="p:\Common\Misc\format.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GFXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GfxPage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\Image.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Misc\Misc.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\Palette.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="p:\Common\String\Path.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="p:\Common\Lang\RefCountObject.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\RLEList.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Lang\Service.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="p:\Common\String\XML.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\DDraw\DDrawRenderClass.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\DDraw\DDrawTexture.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\X2dFont.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="p:\Common\Xtreme\XAsset\XAssetLoader.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\XBasic2dRenderer.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="p:\Common\Xtreme\Xtreme2d\XMultiTexture2d.h">
+      <Filter>Xtreme</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\DateTime\DateTime.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageData.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GDIPage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\DDrawPage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\IO\FileUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

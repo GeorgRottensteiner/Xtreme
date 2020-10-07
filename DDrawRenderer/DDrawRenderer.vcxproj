@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{111B76BB-81FA-405C-A42C-D9B99D0A9409}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>p:\Common;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>p:\Common;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DDRAWRENDERER_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)DDrawRenderer.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)DDrawRenderer.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>$(OutDir)DDrawRenderer.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>D:\SDK\DX81SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme2d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DDRAWRENDERER_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)DDrawRenderer.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>$(OutDir)DDrawRenderer.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>D:\SDK\DX81SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme2d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DDrawRenderer.cpp" />
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Animation.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ContextDescriptor.cpp" />
+    <ClCompile Include="P:\Common\Grafik\DDrawPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GDIPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GFXHelper.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GfxPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Image.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageData.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Palette.cpp" />
+    <ClCompile Include="P:\Common\Grafik\RLEList.cpp" />
+    <ClCompile Include="P:\Common\IO\FileStream.cpp" />
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp" />
+    <ClCompile Include="p:\Common\Lang\RefCountObject.cpp" />
+    <ClCompile Include="P:\Common\Lang\Service.cpp" />
+    <ClCompile Include="P:\Common\Memory\ByteBuffer.cpp" />
+    <ClCompile Include="p:\Common\Misc\Format.cpp" />
+    <ClCompile Include="P:\Common\Misc\Misc.cpp" />
+    <ClCompile Include="p:\Common\String\Convert.cpp" />
+    <ClCompile Include="p:\Common\String\Path.cpp" />
+    <ClCompile Include="p:\Common\String\XML.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\DDraw\DDrawRenderClass.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\DDraw\DDrawTexture.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\X2dFont.cpp" />
+    <ClCompile Include="p:\Common\Xtreme\XAsset\XAssetLoader.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBasic2dRenderer.cpp" />
+    <ClCompile Include="p:\Common\Xtreme\Xtreme2d\XMultiTexture2d.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="P:\Common\DateTime\DateTime.h" />
+    <ClInclude Include="P:\Common\Grafik\Animation.h" />
+    <ClInclude Include="P:\Common\Grafik\ContextDescriptor.h" />
+    <ClInclude Include="P:\Common\Grafik\DDrawPage.h" />
+    <ClInclude Include="P:\Common\Grafik\GDIPage.h" />
+    <ClInclude Include="P:\Common\Grafik\GFXHelper.h" />
+    <ClInclude Include="P:\Common\Grafik\GfxPage.h" />
+    <ClInclude Include="P:\Common\Grafik\Image.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageData.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.h" />
+    <ClInclude Include="P:\Common\Grafik\Palette.h" />
+    <ClInclude Include="P:\Common\Grafik\RLEList.h" />
+    <ClInclude Include="P:\Common\IO\FileStream.h" />
+    <ClInclude Include="P:\Common\IO\FileUtil.h" />
+    <ClInclude Include="p:\Common\Lang\RefCountObject.h" />
+    <ClInclude Include="P:\Common\Lang\Service.h" />
+    <ClInclude Include="P:\Common\Memory\ByteBuffer.h" />
+    <ClInclude Include="p:\Common\Misc\format.h" />
+    <ClInclude Include="P:\Common\Misc\Misc.h" />
+    <ClInclude Include="p:\Common\String\Convert.h" />
+    <ClInclude Include="p:\Common\String\Path.h" />
+    <ClInclude Include="p:\Common\String\XML.h" />
+    <ClInclude Include="P:\Common\Xtreme\DDraw\DDrawRenderClass.h" />
+    <ClInclude Include="P:\Common\Xtreme\DDraw\DDrawTexture.h" />
+    <ClInclude Include="P:\Common\Xtreme\X2dFont.h" />
+    <ClInclude Include="p:\Common\Xtreme\XAsset\XAssetLoader.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBasic2dRenderer.h" />
+    <ClInclude Include="p:\Common\Xtreme\Xtreme2d\XMultiTexture2d.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

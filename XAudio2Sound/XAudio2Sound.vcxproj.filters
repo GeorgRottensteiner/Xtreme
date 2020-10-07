@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{947d84d6-73d0-4cb8-a4b0-bef573db131b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="XAudio2SoundDll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Audio\XAudio2Sound.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Lang\Service.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\String\Convert.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Memory\ByteBuffer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\IO\FileStream.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Lang\RefCountObject.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\WinSys\WinUtils.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Memory\MemoryStream.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GFXHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\GfxPage.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\Image.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\Palette.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ContextDescriptor.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Misc\Misc.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\WinSys\RegistryHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\String\Path.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Misc\Format.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageData.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\Audio\XSoundBase.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XAudio2SoundDll.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Audio\XAudio2Sound.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Lang\Service.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\String\Convert.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Memory\ByteBuffer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\IO\FileStream.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Lang\RefCountObject.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\WinSys\WinUtils.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Memory\MemoryStream.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GFXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\GfxPage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\Image.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\Palette.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ContextDescriptor.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Misc\Misc.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\WinSys\RegistryHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\String\Path.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Misc\format.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\DateTime\DateTime.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageData.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\IO\FileUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\Audio\XSoundBase.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

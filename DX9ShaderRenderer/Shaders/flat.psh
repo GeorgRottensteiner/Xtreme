@@ -1,0 +1,12 @@
+sampler2D input : register( s0 ); 
+float4 main(float2 uv : TEXCOORD) : COLOR 
+{ 
+    float4 Color; 
+    // Color = tex2D( input , uv.xy );
+    Color.r = 0;
+    Color.g = 1;
+    Color.b = 0;
+    Color.a = 1;
+    return Color; 
+}
+

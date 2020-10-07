@@ -1,0 +1,134 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU_MAIN MENU
+BEGIN
+    POPUP "Xtreme"
+    BEGIN
+        MENUITEM "E&xit Demo",                  ID_XTREME_EXIT
+    END
+    POPUP "Setup"
+    BEGIN
+        POPUP "Renderer"
+        BEGIN
+            MENUITEM "DirectX 8",                   ID_RENDERER_DIRECTX8
+            MENUITEM "DirectX 8 direkt",            ID_RENDERER_DIRECTX8DIREKT
+            MENUITEM "DirectX 9",                   ID_RENDERER_DIRECTX9
+            MENUITEM "DirectX 9 Shader",            ID_RENDERER_DIRECTX9SHADER
+            MENUITEM "DirectX 11",                  ID_RENDERER_DIRECTX11
+            MENUITEM "OpenGL ?",                    ID_RENDERER_OPENGL
+            MENUITEM "Vulkan",                      ID_RENDERER_VULKAN
+            MENUITEM "Toggle FullScreen",           ID_RENDERER_TOGGLEFULLSCREEN
+            MENUITEM "None",                        ID_RENDERER_NONE
+            MENUITEM "Set800x600",                  ID_RENDERER_SET800X600
+            MENUITEM "Set next Mode",               ID_RENDERER_SETNEXTMODE
+        END
+        POPUP "Renderer2d"
+        BEGIN
+            MENUITEM "DDraw",                       ID_2DRENDERER_DDRAW
+            MENUITEM "DirectX 8 2D",                ID_2DRENDERER_DIRECTX82D
+            MENUITEM "SDL",                         ID_2DRENDERER_SDL
+            MENUITEM "None",                        ID_2DRENDERER_NONE
+        END
+        POPUP "Sound"
+        BEGIN
+            MENUITEM "DirectX 8",                   ID_SOUND_DIRECTX8
+            MENUITEM "XAudio2",                     ID_SOUND_XAUDIO2
+            MENUITEM "None",                        ID_SOUND_NONE
+        END
+        POPUP "Input"
+        BEGIN
+            MENUITEM "WinInput",                    ID_INPUT_WININPUT
+            MENUITEM "DXInput",                     ID_INPUT_DXINPUT
+            MENUITEM "RawInput",                    ID_INPUT_RAWINPUT
+            MENUITEM "None",                        ID_INPUT_NONE
+        END
+        POPUP "Music"
+        BEGIN
+            MENUITEM "DX8 Ogg from file",           ID_MUSIC_DX8OGGFROMFILE
+            MENUITEM "DX8 Ogg from resource",       ID_MUSIC_DX8OGGFROMRESOURCE
+            MENUITEM "None",                        ID_MUSIC_NONE
+        END
+    END
+    POPUP "Test"
+    BEGIN
+        MENUITEM "Sound",                       ID_TEST_SOUND
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// BINARY
+//
+
+IDR_OGG                 BINARY                  "ingame.ogg"
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

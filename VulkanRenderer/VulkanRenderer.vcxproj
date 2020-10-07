@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ContextDescriptor.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GDIPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GFXHelper.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GfxPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Image.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageData.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Palette.cpp" />
+    <ClCompile Include="P:\Common\IO\FileStream.cpp" />
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp" />
+    <ClCompile Include="P:\Common\Lang\RefCountObject.cpp" />
+    <ClCompile Include="P:\Common\Lang\Service.cpp" />
+    <ClCompile Include="P:\Common\Math\MathUtil.cpp" />
+    <ClCompile Include="P:\Common\Memory\ByteBuffer.cpp" />
+    <ClCompile Include="P:\Common\Memory\MemoryStream.cpp" />
+    <ClCompile Include="P:\Common\Misc\Format.cpp" />
+    <ClCompile Include="P:\Common\Misc\Misc.cpp" />
+    <ClCompile Include="P:\Common\String\Convert.cpp" />
+    <ClCompile Include="P:\Common\String\Path.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanFont.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanLineCache.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanPixelShader.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanQuadCache.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanRenderer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanTexture.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanTriangleCache.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanVertexBuffer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Vulkan\VulkanVertexShader.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBasicFont.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBasicRenderer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBasicVertexBuffer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBoundingBox.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XMesh.cpp" />
+    <ClCompile Include="VulkanRendererDll.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="P:\Common\DateTime\DateTime.h" />
+    <ClInclude Include="P:\Common\Grafik\ContextDescriptor.h" />
+    <ClInclude Include="P:\Common\Grafik\GDIPage.h" />
+    <ClInclude Include="P:\Common\Grafik\GFXHelper.h" />
+    <ClInclude Include="P:\Common\Grafik\GfxPage.h" />
+    <ClInclude Include="P:\Common\Grafik\Image.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageData.h" />
+    <ClInclude Include="P:\Common\Grafik\Palette.h" />
+    <ClInclude Include="P:\Common\IO\FileStream.h" />
+    <ClInclude Include="P:\Common\IO\FileUtil.h" />
+    <ClInclude Include="P:\Common\Lang\RefCountObject.h" />
+    <ClInclude Include="P:\Common\Lang\Service.h" />
+    <ClInclude Include="P:\Common\Math\MathUtil.h" />
+    <ClInclude Include="P:\Common\Memory\ByteBuffer.h" />
+    <ClInclude Include="P:\Common\Memory\MemoryStream.h" />
+    <ClInclude Include="P:\Common\Misc\format.h" />
+    <ClInclude Include="P:\Common\Misc\Misc.h" />
+    <ClInclude Include="P:\Common\String\Convert.h" />
+    <ClInclude Include="P:\Common\String\Path.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanFont.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanLineCache.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanPixelShader.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanQuadCache.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanRenderer.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanTexture.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanTriangleCache.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanVertexBuffer.h" />
+    <ClInclude Include="P:\Common\Xtreme\Vulkan\VulkanVertexShader.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBasicFont.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBasicRenderer.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBasicVertexBuffer.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBoundingBox.h" />
+    <ClInclude Include="P:\Common\Xtreme\XMesh.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A996A516-D9A4-44F4-8595-059874F6C478}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>VulkanRenderer</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>D:\SDK\VulkanSDK\1.1.106.0\Lib32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>D:\SDK\VulkanSDK\1.1.106.0\Lib32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>D:\SDK\VulkanSDK\1.1.106.0\Lib32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>D:\SDK\VulkanSDK\1.1.106.0\Lib32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;VULKANRENDERER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\SDK\VulkanSDK\1.1.106.0\Include;p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;VULKANRENDERER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\SDK\VulkanSDK\1.1.106.0\Include;p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..
+copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;VULKANRENDERER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\SDK\VulkanSDK\1.1.106.0\Include;p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;VULKANRENDERER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\SDK\VulkanSDK\1.1.106.0\Include;p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..
+copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

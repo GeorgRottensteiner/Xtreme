@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D9694EE0-34FA-4EDA-8A40-EDEE2DD2461C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath);D:\SDK\DX9SDK\Include;p:\Common</IncludePath>
+    <LibraryPath>D:\SDK\DX9SDK\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(IncludePath);D:\SDK\DX9SDK\Include;p:\Common</IncludePath>
+    <LibraryPath>D:\SDK\DX9SDK\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)XtremeTest.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)XtremeTest.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)XtremeTest.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="P:\Common\Controls\Component.h" />
+    <ClInclude Include="P:\Common\Controls\ComponentContainer.h" />
+    <ClInclude Include="P:\Common\Controls\ComponentDisplayerBase.h" />
+    <ClInclude Include="P:\Common\Controls\GUILoader.h" />
+    <ClInclude Include="P:\Common\Controls\Xtreme\GUIButton.h" />
+    <ClInclude Include="P:\Common\Controls\Xtreme\GUIComponent.h" />
+    <ClInclude Include="P:\Common\Controls\Xtreme\GUIComponentDisplayer.h" />
+    <ClInclude Include="P:\Common\DateTime\DateTime.h" />
+    <ClInclude Include="P:\Common\DateTime\Timer.h" />
+    <ClInclude Include="P:\Common\debug\DebugService.h" />
+    <ClInclude Include="P:\Common\Grafik\Animation.h" />
+    <ClInclude Include="P:\Common\Grafik\ContextDescriptor.h" />
+    <ClInclude Include="P:\Common\Grafik\GDIPage.h" />
+    <ClInclude Include="P:\Common\Grafik\GFXHelper.h" />
+    <ClInclude Include="P:\Common\Grafik\GfxPage.h" />
+    <ClInclude Include="P:\Common\Grafik\Image.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageData.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatBMP.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatIGF.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatTGA.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.h" />
+    <ClInclude Include="P:\Common\Grafik\Palette.h" />
+    <ClInclude Include="P:\Common\GR\DataBase\DataBase.h" />
+    <ClInclude Include="P:\Common\GR\DataBase\DataBaseTable.h" />
+    <ClInclude Include="P:\Common\GR\DataBase\KeyTable.h" />
+    <ClInclude Include="P:\Common\GR\DataBase\SimpleTable.h" />
+    <ClInclude Include="P:\Common\GR\Gamebase\Framework.h" />
+    <ClInclude Include="P:\Common\GR\Gamebase\ValueStorage.h" />
+    <ClInclude Include="P:\Common\GR\LocalRegistry\LocalRegistry.h" />
+    <ClInclude Include="P:\Common\IO\FileChunk.h" />
+    <ClInclude Include="P:\Common\IO\FileLocator.h" />
+    <ClInclude Include="P:\Common\IO\FileStream.h" />
+    <ClInclude Include="P:\Common\IO\FileUtil.h" />
+    <ClInclude Include="P:\Common\Lang\EventQueue.h" />
+    <ClInclude Include="P:\Common\Lang\RefCountObject.h" />
+    <ClInclude Include="p:\Common\Lang\Service.h" />
+    <ClInclude Include="P:\Common\MasterFrame\Console.h" />
+    <ClInclude Include="P:\Common\MasterFrame\XFrameApp.h" />
+    <ClInclude Include="P:\Common\Math\MathUtil.h" />
+    <ClInclude Include="p:\Common\Memory\ByteBuffer.h" />
+    <ClInclude Include="P:\Common\Memory\MemoryStream.h" />
+    <ClInclude Include="P:\Common\Misc\CloneFactory.h" />
+    <ClInclude Include="P:\Common\Misc\format.h" />
+    <ClInclude Include="P:\Common\Misc\Misc.h" />
+    <ClInclude Include="P:\Common\Setup\Groups.h" />
+    <ClInclude Include="P:\Common\String\Convert.h" />
+    <ClInclude Include="P:\Common\String\Path.h" />
+    <ClInclude Include="P:\Common\String\Tokenizer.h" />
+    <ClInclude Include="P:\Common\String\XML.h" />
+    <ClInclude Include="P:\Common\WinSys\RegistryHelper.h" />
+    <ClInclude Include="P:\Common\WinSys\SubclassManager.h" />
+    <ClInclude Include="P:\Common\WinSys\WinUtils.h" />
+    <ClInclude Include="P:\Common\Xtreme\DX9\DX9RenderClass.h" />
+    <ClInclude Include="P:\Common\Xtreme\DX9\DX9Texture.h" />
+    <ClInclude Include="P:\Common\Xtreme\DX9\DX9VertexBuffer.h" />
+    <ClInclude Include="P:\Common\Xtreme\Environment\XWindowWin32.h" />
+    <ClInclude Include="P:\Common\Xtreme\MeshFormate\MD3.h" />
+    <ClInclude Include="P:\Common\Xtreme\NullSound\XNullMusic.h" />
+    <ClInclude Include="P:\Common\Xtreme\NullSound\XNullSound.h" />
+    <ClInclude Include="P:\Common\Xtreme\XAsset\XAssetLoader.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBasicFont.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBasicRenderer.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBasicVertexBuffer.h" />
+    <ClInclude Include="P:\Common\Xtreme\XBoundingBox.h" />
+    <ClInclude Include="P:\Common\Xtreme\XCamera.h" />
+    <ClInclude Include="P:\Common\Xtreme\XHugeTexture.h" />
+    <ClInclude Include="P:\Common\Xtreme\XMesh.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Xtreme.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="P:\Common\Controls\Component.cpp" />
+    <ClCompile Include="P:\Common\Controls\ComponentContainer.cpp" />
+    <ClCompile Include="P:\Common\Controls\ComponentDisplayerBase.cpp" />
+    <ClCompile Include="P:\Common\Controls\GUILoader.cpp" />
+    <ClCompile Include="P:\Common\Controls\Xtreme\GUIButton.cpp" />
+    <ClCompile Include="P:\Common\Controls\Xtreme\GUIComponent.cpp" />
+    <ClCompile Include="P:\Common\Controls\Xtreme\GUIComponentDisplayer.cpp" />
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp" />
+    <ClCompile Include="P:\Common\DateTime\Timer.cpp" />
+    <ClCompile Include="P:\Common\debug\DebugService.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Animation.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ContextDescriptor.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GDIPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GFXHelper.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GfxPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Image.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageData.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatBMP.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatIGF.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatTGA.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Palette.cpp" />
+    <ClCompile Include="P:\Common\GR\DataBase\DataBase.cpp" />
+    <ClCompile Include="P:\Common\GR\DataBase\DataBaseTable.cpp" />
+    <ClCompile Include="P:\Common\GR\DataBase\KeyTable.cpp" />
+    <ClCompile Include="P:\Common\GR\DataBase\SimpleTable.cpp" />
+    <ClCompile Include="P:\Common\GR\Gamebase\Framework.cpp" />
+    <ClCompile Include="P:\Common\GR\Gamebase\ValueStorage.cpp" />
+    <ClCompile Include="P:\Common\GR\LocalRegistry\LocalRegistry.cpp" />
+    <ClCompile Include="P:\Common\IO\FileChunk.cpp" />
+    <ClCompile Include="P:\Common\IO\FileLocator.cpp" />
+    <ClCompile Include="P:\Common\IO\FileStream.cpp" />
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp" />
+    <ClCompile Include="P:\Common\Lang\EventQueue.cpp" />
+    <ClCompile Include="P:\Common\Lang\RefCountObject.cpp" />
+    <ClCompile Include="p:\Common\Lang\Service.cpp" />
+    <ClCompile Include="P:\Common\MasterFrame\Console.cpp" />
+    <ClCompile Include="P:\Common\MasterFrame\XFrameApp.cpp" />
+    <ClCompile Include="P:\Common\Math\MathUtil.cpp" />
+    <ClCompile Include="p:\Common\Memory\ByteBuffer.cpp" />
+    <ClCompile Include="P:\Common\Memory\MemoryStream.cpp" />
+    <ClCompile Include="P:\Common\Misc\CloneFactory.cpp" />
+    <ClCompile Include="P:\Common\Misc\Format.cpp" />
+    <ClCompile Include="P:\Common\Misc\Misc.cpp" />
+    <ClCompile Include="P:\Common\Setup\Groups.cpp" />
+    <ClCompile Include="P:\Common\String\Convert.cpp" />
+    <ClCompile Include="P:\Common\String\Path.cpp" />
+    <ClCompile Include="P:\Common\String\Tokenizer.cpp" />
+    <ClCompile Include="P:\Common\String\XML.cpp" />
+    <ClCompile Include="P:\Common\WinSys\RegistryHelper.cpp" />
+    <ClCompile Include="P:\Common\WinSys\SubclassManager.cpp" />
+    <ClCompile Include="P:\Common\WinSys\WinUtils.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\DX9\DX9RenderClass.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\DX9\DX9Texture.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\DX9\DX9VertexBuffer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Environment\XWindowWin32.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\MeshFormate\MD3.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\NullSound\XNullMusic.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\NullSound\XNullSound.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XAsset\XAssetLoader.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBasicFont.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBasicRenderer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBasicVertexBuffer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XBoundingBox.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XCamera.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XHugeTexture.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XMesh.cpp" />
+    <ClCompile Include="Xtreme.cpp" />
+    <ClCompile Include="XtremeMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="binary1.bin" />
+    <None Include="ingame.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Xtreme.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

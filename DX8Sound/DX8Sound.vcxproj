@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3B9C036F-3831-4DDB-A538-30E0F4F20880}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>p:\Common;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\SDK\DX81SDK\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>p:\Common;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\SDK\DX81SDK\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DX8SOUND_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)DX8Sound.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)DX8Sound.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>$(OutDir)DX8Sound.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme2d
+copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DX8SOUND_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)DX8Sound.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>$(OutDir)DX8Sound.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme2d
+copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DX8Sound.cpp" />
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp" />
+    <ClCompile Include="p:\Common\Io\FileStream.cpp" />
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp" />
+    <ClCompile Include="P:\Common\Lang\EventQueue.cpp" />
+    <ClCompile Include="p:\Common\Lang\RefCountObject.cpp" />
+    <ClCompile Include="p:\Common\Lang\Service.cpp" />
+    <ClCompile Include="p:\Common\Memory\ByteBuffer.cpp" />
+    <ClCompile Include="p:\Common\Misc\Format.cpp" />
+    <ClCompile Include="p:\Common\Misc\Misc.cpp" />
+    <ClCompile Include="p:\Common\String\Convert.cpp" />
+    <ClCompile Include="p:\Common\String\Path.cpp" />
+    <ClCompile Include="p:\Common\String\XML.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Audio\DXSound.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\Audio\XSoundBase.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XAsset\XAssetLoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DX8Sound.h" />
+    <ClInclude Include="P:\Common\DateTime\DateTime.h" />
+    <ClInclude Include="p:\Common\Io\FileStream.h" />
+    <ClInclude Include="P:\Common\IO\FileUtil.h" />
+    <ClInclude Include="P:\Common\Lang\EventQueue.h" />
+    <ClInclude Include="p:\Common\Lang\RefCountObject.h" />
+    <ClInclude Include="p:\Common\Lang\Service.h" />
+    <ClInclude Include="p:\Common\Memory\ByteBuffer.h" />
+    <ClInclude Include="p:\Common\Misc\format.h" />
+    <ClInclude Include="p:\Common\Misc\Misc.h" />
+    <ClInclude Include="p:\Common\String\Convert.h" />
+    <ClInclude Include="p:\Common\String\Path.h" />
+    <ClInclude Include="p:\Common\String\XML.h" />
+    <ClInclude Include="P:\Common\Xtreme\Audio\DXSound.h" />
+    <ClInclude Include="P:\Common\Xtreme\Audio\XSoundBase.h" />
+    <ClInclude Include="P:\Common\Xtreme\XAsset\XAsset.h" />
+    <ClInclude Include="P:\Common\Xtreme\XAsset\XAssetLoader.h" />
+    <ClInclude Include="P:\Common\Xtreme\XAsset\XAssetSound.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

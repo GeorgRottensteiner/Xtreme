@@ -1,0 +1,73 @@
+struct DirectionLight
+{
+  float3   Direction;
+  float4    Diffuse;
+  float4    Specular;
+};
+
+cbuffer LightsConstantBuffer : register( b1 )
+{
+  float4        Ambient;
+  float3       EyePos;
+  DirectionLight    Light[8];
+  float           Padding;
+};
+
+struct Material
+{
+  float4    MaterialEmissive;
+  float4    MaterialAmbient;
+  float4    MaterialDiffuse;
+  float4    MaterialSpecular;
+  float     MaterialSpecularPower;
+  float3    MaterialPadding;
+};
+
+cbuffer MaterialConstantBuffer : register( b2 )
+{
+  Material  _Material;
+};
+
+Texture2D shaderTexture;
+SamplerState SampleType;
+
+
+// Per-pixel color data passed through the pixel shader.
+struct PixelShaderInput
+{
+  float4 pos : SV_POSITION;
+  float3 normal : NORMAL;
+  float2 tex : TEXCOORD0;
+  float4 color : COLOR0;
+};
+
+
+//--------------------------------------------------------------------------------------
+// Phong Lighting Reflection Model
+//--------------------------------------------------------------------------------------
+float4 calcPhongLighting( Material M, float4 MeshColor, float4 LColor, float3 Normal, float3 L, float3 V, float3 R )
+{
+  float4 Ia = M.MaterialAmbient * Ambient;
+  float4 Id = M.MaterialDiffuse * saturate( dot( Normal, L ) );
+  float4 Is = M.MaterialSpecular * pow( saturate( dot( R, V ) ), M.A );
+
+  return Ia + ( Id + Is ) * LColor * MeshColor;
+}
+
+
+
+
+// A pass-through function for the (interpolated) color data.
+float4 main(PixelShaderInput input) : SV_TARGET
+{
+  // Sample the pixel color from the texture using the sampler at this texture coordinate location.
+  float4 textureColor = shaderTexture.Sample( SampleType, input.tex ) * input.color;
+
+  input.normal = normalize( input.normal );
+  float3 V = normalize( EyePos - ( float3 )input.wp );
+  //DONOT USE -light.dir since the reflection returns a ray from the surface
+  float3 R = reflect( light.dir, input.n );
+
+  //calculate lighting
+  return calcPhongLighting( MaterialConstantBuffer, textureColor, light.color, input.n, -light.dir, V, R );
+}

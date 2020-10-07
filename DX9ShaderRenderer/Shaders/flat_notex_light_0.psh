@@ -1,0 +1,15 @@
+
+struct PixelShaderInput 
+{
+  float4 Color : COLOR0; 
+};
+
+
+
+float4 main( PixelShaderInput input ) : COLOR 
+{ 
+    float4 Color; 
+    Color = input.Color;
+    return Color; 
+}
+

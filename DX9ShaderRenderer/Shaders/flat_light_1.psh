@@ -1,0 +1,16 @@
+struct PixelShaderInput 
+{
+  float4      Color : COLOR0; 
+  float2      uv : TEXCOORD;
+};
+
+sampler2D   Sampler : s0;
+
+float4 main( PixelShaderInput input ) : COLOR 
+{ 
+    float4 Color; 
+    Color = tex2D( Sampler, input.uv.xy );
+    Color *= input.Color;
+    return Color; 
+}
+
