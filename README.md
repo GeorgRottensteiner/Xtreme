@@ -5,6 +5,7 @@ Renderer, Sound, Input and Music players for the Xtreme engine, plus a test bed.
 ## Installation
 
 Expects drive P: containing code files from https://github.com/GeorgRottensteiner/Common (as P:\Common\...)
+
 Expects several SDKs at these places:
 * DirectX 8.1 SDK at D:\SDK\DX81SDK
 * DirectX 9 SDK at D:\SDK\DX9SDK
