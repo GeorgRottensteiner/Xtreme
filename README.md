@@ -2,6 +2,16 @@
 
 Renderer, Sound, Input and Music players for the Xtreme engine, plus a test bed.
 
+Fully functional:
+* DDrawRenderer, DX11Renderer, DX82dRenderer, DX8MPlayer, DX8OggPlayer, DX8Renderer, DX8Sound, DX9Renderer, DXInput, Rawinput, WinInput, XAudioSound
+
+Fully functional, but for some reason not included here (not building a Dll):
+* SDLRenderer, SDLSound, SDLMusic, SDLInput
+
+Not fully implemented yet:
+* OpenGLRenderer  (2d functional, 3d still missing most parts)
+* VulkanRenderer  (initialising started, but nothing displays yet)
+
 ## Installation
 
 Expects drive P: containing code files from https://github.com/GeorgRottensteiner/Common (as P:\Common\...)
