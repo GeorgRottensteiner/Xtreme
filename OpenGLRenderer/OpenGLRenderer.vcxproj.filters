@@ -107,6 +107,9 @@
     <ClCompile Include="P:\Common\IO\FileUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="P:\Common\Xtreme\OpenGL\OpenGLVertexBuffer.cpp">
+      <Filter>Xtreme</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="P:\Common\Xtreme\OpenGL\OpenGLRenderClass.h">
@@ -204,6 +207,9 @@
     </ClInclude>
     <ClInclude Include="P:\Common\IO\FileUtil.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Xtreme\OpenGL\OpenGLVertexBuffer.h">
+      <Filter>Xtreme</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

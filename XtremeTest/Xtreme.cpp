@@ -326,8 +326,136 @@ void CXtreme::DisplayCirclingLightScene( XRenderer& Renderer )
 #include <gl\glu.h>
 #include <D:\SDK\OpenGL\gl\glext.h>
 
+GLfloat vertices[][3] = {
+  { -1.0, -1.0, -1.0 },
+  {  1.0, -1.0, -1.0 },
+  {  1.0,  1.0, -1.0 },
+  { -1.0,  1.0, -1.0 },
+  { -1.0, -1.0,  1.0 },
+  {  1.0, -1.0,  1.0 },
+  {  1.0,  1.0,  1.0 },
+  { -1.0,  1.0,  1.0 } };
+
+GLfloat normals[][3] = {
+  { -1.0, -1.0, -1.0 },
+  {  1.0, -1.0, -1.0 },
+  {  1.0,  1.0, -1.0 },
+  { -1.0,  1.0, -1.0 },
+  { -1.0, -1.0,  1.0 },
+  {  1.0, -1.0,  1.0 },
+  {  1.0,  1.0,  1.0 },
+  { -1.0,  1.0,  1.0 } };
+
+GLfloat colors[][3] = {
+  { 0.0, 0.0, 0.0 },
+  { 1.0, 0.0, 0.0 },
+  { 1.0, 1.0, 0.0 },
+  { 0.0, 1.0, 0.0 },
+  { 0.0, 0.0, 1.0 },
+  { 1.0, 0.0, 1.0 },
+  { 1.0, 1.0, 1.0 },
+  { 0.0, 1.0, 1.0 } };
+
+static GLint axis = 2;
+static GLfloat theta[3] = { 0.0, 0.0, 0.0 };
+
+void polygon( int a, int b, int c, int d )
+{
+  glBegin( GL_POLYGON );
+
+  glColor3fv( colors[a] );
+  glNormal3fv( normals[a] );
+  glVertex3fv( vertices[a] );
+
+  glColor3fv( colors[b] );
+  glNormal3fv( normals[b] );
+  glVertex3fv( vertices[b] );
+
+  glColor3fv( colors[c] );
+  glNormal3fv( normals[c] );
+  glVertex3fv( vertices[c] );
+
+  glColor3fv( colors[d] );
+  glNormal3fv( normals[d] );
+  glVertex3fv( vertices[d] );
+
+  glEnd();
+}
+
 void CXtreme::DisplayOpenGLDirectly( XRenderer& Renderer )
 {
+  int w = Renderer.Width();
+  int h = Renderer.Height();
+
+  XViewport   vp = Renderer.Viewport();
+  vp.Width = w;
+  vp.Height = h;
+
+  Renderer.SetViewport( vp );
+  //glViewport( 0, 0, w, h );
+  glMatrixMode( GL_PROJECTION );
+  glLoadIdentity();
+
+  math::matrix4   matProj;
+  if ( w <= h )
+  {
+    /*
+    glOrtho(
+      -2.0, 2.0,
+      -2.0 * (GLfloat)h / (GLfloat)w, 2.0 * (GLfloat)h / (GLfloat)w,
+      -10.0, 10.0 );*/
+
+    matProj.OrthoOffCenterLH( -2.0, 2.0, 2.0 * (GLfloat)h / (GLfloat)w, -2.0 * (GLfloat)h / (GLfloat)w,
+                              -10.0, 10.0 );
+  }
+  else
+  {
+    glOrtho(
+      -2.0 * (GLfloat)h / (GLfloat)w, 2.0 * (GLfloat)h / (GLfloat)w,
+      -2.0, 2.0,
+      -10.0, 10.0 );
+
+    math::matrix4   matOrthoGL;
+
+    glGetFloatv( GL_PROJECTION_MATRIX, (GLfloat*)&matOrthoGL );
+
+    matProj.OrthoOffCenterLH( -2.0f * (GLfloat)h / (GLfloat)w, 2.0f * (GLfloat)h / (GLfloat)w,
+                              -2.0f, 2.0f,
+                              -10.0f, 10.0f );
+  }
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, matProj );
+
+  
+
+  glMatrixMode( GL_MODELVIEW );
+
+  math::matrix4   matWorld;
+
+  matWorld.Identity();
+
+  matWorld *= math::matrix4().RotationZ( theta[2] );
+  matWorld *= math::matrix4().RotationY( theta[1] );
+  matWorld *= math::matrix4().RotationX( theta[0] );
+
+  /*
+  glLoadIdentity();
+
+  glRotatef( theta[0], 1.0, 0.0, 0.0 );
+  glRotatef( theta[1], 0.0, 1.0, 0.0 );
+  glRotatef( theta[2], 0.0, 0.0, 1.0 );*/
+  //glLoadMatrixf( (GLfloat*)&matWorld );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  polygon( 0, 3, 2, 1 );
+  polygon( 2, 3, 7, 6 );
+  polygon( 0, 4, 7, 3 );
+  polygon( 1, 2, 6, 5 );
+  polygon( 4, 5, 6, 7 );
+  polygon( 0, 1, 5, 4 );
+
+  return;
+  /*
   //Renderer.SetTexture( 0, m_pTextureColorKey );
 
   Renderer.Clear();
@@ -337,7 +465,7 @@ void CXtreme::DisplayOpenGLDirectly( XRenderer& Renderer )
   glDisable( GL_ALPHA_TEST );
   glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
   glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
-
+  */
   /*
   Renderer.SetState( XRenderer::RS_ALPHATEST, XRenderer::RSV_DISABLE );
   Renderer.SetState( XRenderer::RS_ALPHABLENDING, XRenderer::RSV_DISABLE );
@@ -391,6 +519,7 @@ void CXtreme::DisplayOpenGLDirectly( XRenderer& Renderer )
 
 void CXtreme::DisplayFrame( XRenderer& Renderer )
 {
+  //Renderer.Clear();
   //DisplayOpenGLDirectly( Renderer );
   //return;
 
@@ -1169,6 +1298,12 @@ void CXtreme::UpdatePerDisplayFrame( const float fElapsedTime )
 
 void CXtreme::UpdateFixedLogic()
 {
+  theta[axis] = theta[axis] + 0.80f;
+  if ( 360.0 < theta[axis] )
+  {
+    theta[axis] = theta[axis] - 360.0f;
+  }
+
   if ( m_pRenderer2d )
   {
     InvalidateRect( m_RenderFrame.m_hwndMain, NULL, FALSE );
@@ -1193,6 +1328,7 @@ void CXtreme::RestoreData()
 
     if ( m_pRenderClass->Initialize( rc.right - rc.left, rc.bottom - rc.top, 16, false, GR::Service::Environment::Instance() ) )
     {
+
       m_pRenderClass->SetLight( 0, m_Light );
       /*
       CLoadMD3    md3Loader;
@@ -1511,6 +1647,9 @@ LRESULT CXtreme::WindowProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
     case WM_CHAR:
       switch ( (char)wParam )
       {
+        case '1':
+          axis = ( axis + 1 ) % 3;
+          break;
         case 'a':
           if ( m_pRenderClass != NULL )
           {

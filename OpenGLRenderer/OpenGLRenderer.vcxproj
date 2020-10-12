@@ -128,6 +128,7 @@ copy $(TargetPath) ..\xtremetest</Command>
     <ClCompile Include="p:\Common\String\XML.cpp" />
     <ClCompile Include="P:\Common\Xtreme\OpenGL\OpenGLRenderClass.cpp" />
     <ClCompile Include="P:\Common\Xtreme\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGL\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="p:\Common\Xtreme\XAsset\XAssetLoader.cpp" />
     <ClCompile Include="p:\Common\Xtreme\XBasicFont.cpp" />
     <ClCompile Include="p:\Common\Xtreme\XBasicRenderer.cpp" />
@@ -159,6 +160,7 @@ copy $(TargetPath) ..\xtremetest</Command>
     <ClInclude Include="p:\Common\String\XML.h" />
     <ClInclude Include="P:\Common\Xtreme\OpenGL\OpenGLRenderClass.h" />
     <ClInclude Include="P:\Common\Xtreme\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGL\OpenGLVertexBuffer.h" />
     <ClInclude Include="p:\Common\Xtreme\XAsset\XAssetLoader.h" />
     <ClInclude Include="p:\Common\Xtreme\XBasicFont.h" />
     <ClInclude Include="p:\Common\Xtreme\XBasicRenderer.h" />
