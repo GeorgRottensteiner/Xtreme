@@ -17,6 +17,8 @@
 
 #include <Xtreme/X2dRenderer.h>
 
+#include <Xtreme/XBasicFont.h>
+
 
 CXtreme     theApp;
 
@@ -46,8 +48,11 @@ CXtreme::CXtreme() :
   m_NumLines( 1 ),
   m_LightAngle( 0.0f ),
   m_TextureTransformFactor( 0.0f ),
-  m_pRenderer2d( NULL )
+  m_pRenderer2d( NULL ),
+  m_Screen( 0 )
 {
+  m_Screen = 13;
+
   m_Frames = 0;
   m_fLastFPSStopTime = 0.0f;
   m_pVBTest = NULL;
@@ -99,60 +104,55 @@ void CXtreme::Display2LightScene( XRenderer& Renderer )
   Light.m_Type = XLight::LT_DIRECTIONAL;
   Light.m_Ambient = 0xff404040;
   Light.m_Diffuse = 0xff0000c0;
-
   Light.m_Direction.set( 0.2f, 0.8f, -0.3f );
 
   Renderer.SetLight( 0, Light );
   Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE );
-
   //Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
   memset( &Light, 0, sizeof( XLight ) );
 
   Light.m_Type = XLight::LT_DIRECTIONAL;
   Light.m_Ambient = 0xff808080;
   Light.m_Diffuse = 0xff400000;
-
   Light.m_Direction.set( -0.3f, 0.8f, 0.2f );
 
   Renderer.SetLight( 1, Light );
   Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE, 1 );
-  m_pRenderClass->SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
-
-  m_pRenderClass->Clear();
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
 
   math::matrix4     mat;
 
   mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
 
-  m_pRenderClass->SetTransform( XRenderer::TT_PROJECTION, mat );
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
 
   XCamera cam;
 
-  cam.SetValues( GR::tVector( 10, 0, 30 ),
+  cam.SetValues( GR::tVector( 3, 0, 3 ),
     GR::tVector( 0, 0, 0 ), 
     GR::tVector( 0, -1, 0 ) );
 
-  m_pRenderClass->SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
 
   math::matrix4   matWorld;
 
   matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
   matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( -10.0f, 0.0f, 0.0f ) );
 
-  m_pRenderClass->SetTransform( XRenderer::TT_WORLD, matWorld );
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
 
-  m_pRenderClass->SetTexture( 0, m_pTexture );
-  m_pRenderClass->SetShader( XRenderer::ST_FLAT );
+  Renderer.SetTexture( 0, m_pTexture );
+  Renderer.SetShader( XRenderer::ST_FLAT );
 
-  m_pRenderClass->RenderVertexBuffer( m_pVBCloned );
+  Renderer.RenderVertexBuffer( m_pVBCloned );
 
-  m_pRenderClass->SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_DISABLE );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_DISABLE );
   Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
 
-  m_pRenderClass->SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
   if ( m_pFont )
   {
-    m_pRenderClass->RenderText2d( m_pFont, 10, 10, "2 lights scene", 0xffffffff );
+    Renderer.RenderText2d( m_pFont, 10, 10, "2 lights scene", 0xffffffff );
   }
 }
 
@@ -405,8 +405,8 @@ void CXtreme::DisplayOpenGLDirectly( XRenderer& Renderer )
       -2.0 * (GLfloat)h / (GLfloat)w, 2.0 * (GLfloat)h / (GLfloat)w,
       -10.0, 10.0 );*/
 
-    matProj.OrthoOffCenterLH( -2.0, 2.0, 2.0 * (GLfloat)h / (GLfloat)w, -2.0 * (GLfloat)h / (GLfloat)w,
-                              -10.0, 10.0 );
+    matProj.OrthoOffCenterLH( -2.0f, 2.0f, 2.0f * (GLfloat)h / (GLfloat)w, -2.0f * (GLfloat)h / (GLfloat)w,
+                              -10.0f, 10.0f );
   }
   else
   {
@@ -517,8 +517,717 @@ void CXtreme::DisplayOpenGLDirectly( XRenderer& Renderer )
 
 
 
+void CXtreme::DisplayScreenFlat( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+
+  Renderer.SetShader( XRenderer::ST_FLAT_NO_TEXTURE );
+  Renderer.RenderQuad2d( 5,   5, 40, 40, 0xffff0000 );
+  Renderer.RenderQuad2d( 5,  45, 40, 40, 0xff00ff00 );
+  Renderer.RenderQuad2d( 5,  85, 40, 40, 0xff0000ff );
+  Renderer.RenderQuad2d( 5, 125, 40, 40, 0xff000000, 0xffff0000, 0xff00ff00, 0xff0000ff );
+
+  Renderer.RenderTextureSection2d( 5, 165, XTextureSection( m_pTexture, 0, 0, 40, 40 ) );
+
+  Renderer.RenderTriangle2d( GR::tPoint( 25, 205 ), GR::tPoint( 45, 245 ), GR::tPoint( 5, 245 ), 0xffff0000 );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80,  15, "Flat, no texture, red" );
+  Renderer.RenderText2d( m_pFont, 80,  55, "Flat, no texture, green" );
+  Renderer.RenderText2d( m_pFont, 80,  95, "Flat, no texture, blue" );
+  Renderer.RenderText2d( m_pFont, 80, 135, "Flat, no texture, color faded" );
+  Renderer.RenderText2d( m_pFont, 80, 175, "Flat, with texture (should be white)" );
+
+  Renderer.RenderText2d( m_pFont, 80, 215, "Flat triangle, no texture, red" );
+}
+
+
+
+void CXtreme::DisplayScreenFlatTextured( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+
+  Renderer.SetShader( XRenderer::ST_FLAT );
+  Renderer.RenderTextureSection2d( 5,   5, XTextureSection( m_pTexture, 0, 0, 40, 40 ) );
+  Renderer.RenderTextureSection2d( 5,  45, XTextureSection( m_pTexture, 0, 0, 40, 40 ), 0xffff0000 );
+  Renderer.RenderTextureSection2d( 5,  85, XTextureSection( m_pTexture, 0, 0, 40, 40 ), 0xff00ff00 );
+  Renderer.RenderTextureSection2d( 5, 125, XTextureSection( m_pTexture, 0, 0, 40, 40 ), 0xff0000ff );
+  Renderer.RenderTextureSection2d( 5, 165, XTextureSection( m_pTexture, 0, 0, 40, 40 ), 0xff000000, 0xffff0000, 0xff00ff00, 0xff0000ff );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80,  15, "Flat, textured" );
+  Renderer.RenderText2d( m_pFont, 80,  55, "Flat, textured, red" );
+  Renderer.RenderText2d( m_pFont, 80,  95, "Flat, textured, green" );
+  Renderer.RenderText2d( m_pFont, 80, 135, "Flat, textured, blue" );
+  Renderer.RenderText2d( m_pFont, 80, 175, "Flat, textured, color faded" );
+}
+
+
+
+void CXtreme::DisplayScreenFlatTexturedAlphaTest( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderTextureSection2d( 5, 5, XTextureSection( m_pTexture2, 0, 0, 40, 40 ) );
+  Renderer.RenderTextureSection2d( 5, 45, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0xffff0000 );
+  Renderer.RenderTextureSection2d( 5, 85, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0xff00ff00 );
+  Renderer.RenderTextureSection2d( 5, 125, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0xff0000ff );
+  Renderer.RenderTextureSection2d( 5, 165, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0xff000000, 0xffff0000, 0xff00ff00, 0xff0000ff );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "alpha test, textured" );
+  Renderer.RenderText2d( m_pFont, 80, 55, "alpha test, textured, red" );
+  Renderer.RenderText2d( m_pFont, 80, 95, "alpha test, textured, green" );
+  Renderer.RenderText2d( m_pFont, 80, 135, "alpha test, textured, blue" );
+  Renderer.RenderText2d( m_pFont, 80, 175, "alpha test, textured, color faded" );
+}
+
+
+
+void CXtreme::DisplayScreenAlphaBlended( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+
+  Renderer.SetTexture( 0, NULL ),
+  Renderer.SetShader( XRenderer::ST_ALPHA_BLEND );
+  Renderer.RenderQuad2d( 5, 5, 40, 40, 0x80ffffff );
+  Renderer.RenderQuad2d( 5, 45, 40, 40, 0x80ff0000 );
+  Renderer.RenderQuad2d( 5, 85, 40, 40, 0x8000ff00 );
+  Renderer.RenderQuad2d( 5, 125, 40, 40, 0x800000ff );
+  Renderer.RenderTextureSection2d( 5, 165, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x00000000, 0x80ff0000, 0x8000ff00, 0xff0000ff );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "alpha blended 50%, normal" );
+  Renderer.RenderText2d( m_pFont, 80, 55, "alpha blended 50%, red" );
+  Renderer.RenderText2d( m_pFont, 80, 95, "alpha blended 50%, green" );
+  Renderer.RenderText2d( m_pFont, 80, 135, "alpha blended 50%, blue" );
+  Renderer.RenderText2d( m_pFont, 80, 175, "alpha blended 50%, with texture, color and alpha faded" );
+}
+
+
+
+void CXtreme::DisplayScreenAlphaBlendedTextured( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_BLEND );
+  Renderer.RenderTextureSection2d( 5, 5, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x80ffffff );
+  Renderer.RenderTextureSection2d( 5, 45, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x80ff0000 );
+  Renderer.RenderTextureSection2d( 5, 85, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x8000ff00 );
+  Renderer.RenderTextureSection2d( 5, 125, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x800000ff );
+  Renderer.RenderTextureSection2d( 5, 165, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x00000000, 0x80ff0000, 0x8000ff00, 0xff0000ff );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "alpha blended 50%, textured, normal" );
+  Renderer.RenderText2d( m_pFont, 80, 55, "alpha blended 50%, textured, red" );
+  Renderer.RenderText2d( m_pFont, 80, 95, "alpha blended 50%, textured, green" );
+  Renderer.RenderText2d( m_pFont, 80, 135, "alpha blended 50%, textured, blue" );
+  Renderer.RenderText2d( m_pFont, 80, 175, "alpha blended 50%, textured, color and alpha faded" );
+}
+
+
+
+void CXtreme::DisplayScreenAdditive( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+
+  Renderer.SetShader( XRenderer::ST_ADDITIVE );
+  Renderer.RenderTextureSection2d( 5, 5, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0xffffffff );
+  Renderer.RenderTextureSection2d( 5, 45, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x80ffffff );
+  Renderer.RenderTextureSection2d( 5, 85, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x8000ff00 );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "additive, textured, normal" );
+  Renderer.RenderText2d( m_pFont, 80, 55, "additive, textured, alpha 50%" );
+  Renderer.RenderText2d( m_pFont, 80, 95, "additive, textured, alpha 50%, red" );
+}
+
+
+
+void CXtreme::DisplayScreenTextureAlphaOnly( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST_COLOR_FROM_DIFFUSE );
+  Renderer.RenderTextureSection2d( 5, 5, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0xffffffff );
+  Renderer.RenderTextureSection2d( 5, 45, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x80ffffff );
+  Renderer.RenderTextureSection2d( 5, 85, XTextureSection( m_pTexture2, 0, 0, 40, 40 ), 0x8000ff00 );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "white contour, alpha tested" );
+  Renderer.RenderText2d( m_pFont, 80, 55, "white contour, alpha 50%" );
+  Renderer.RenderText2d( m_pFont, 80, 95, "green contour, alpha 50%" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatLightsDisabled( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_DISABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT_NO_TEXTURE );
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, no texture, lights disabled" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatTexturedLightsDisabled( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_DISABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT );
+  Renderer.SetTexture( 0, m_pTexture2 );
+
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, texture, lights disabled" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatNoLight( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 0 );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT_NO_TEXTURE );
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, no texture, no lights" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatTexturedNoLight( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 0 );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT );
+  Renderer.SetTexture( 0, m_pTexture2 );
+
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, texture, no lights" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatOneLight( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  XLight      Light;
+
+  memset( &Light, 0, sizeof( XLight ) );
+
+  Light.m_Type = XLight::LT_DIRECTIONAL;
+  Light.m_Ambient = 0xff404040;
+  Light.m_Diffuse = 0xff0000c0;
+  Light.m_Direction.set( 0.2f, 0.8f, -0.3f );
+
+  Renderer.SetLight( 0, Light );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT_NO_TEXTURE );
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, no texture, one light" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatTexturedOneLight( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  XLight      Light;
+
+  memset( &Light, 0, sizeof( XLight ) );
+
+  Light.m_Type = XLight::LT_DIRECTIONAL;
+  Light.m_Ambient = 0xff404040;
+  //Light.m_Diffuse = 0xff0000c0;
+  Light.m_Diffuse = 0xffffffff;
+  Light.m_Direction.set( 0.2f, 0.8f, -0.3f );
+
+  Renderer.SetLight( 0, Light );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
+
+  Renderer.SetState( XRenderer::RS_AMBIENT, 0xff808080 );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT );
+  Renderer.SetTexture( 0, m_pTexture2 );
+
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, texture, one light" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatTwoLights( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  XLight      Light;
+
+  memset( &Light, 0, sizeof( XLight ) );
+
+  Light.m_Type = XLight::LT_DIRECTIONAL;
+  Light.m_Ambient = 0xff404040;
+  Light.m_Diffuse = 0xff0000c0;
+  Light.m_Direction.set( 0.2f, 0.8f, -0.3f );
+
+  Renderer.SetLight( 0, Light );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE );
+  //Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  memset( &Light, 0, sizeof( XLight ) );
+
+  Light.m_Type = XLight::LT_DIRECTIONAL;
+  Light.m_Ambient = 0xff808080;
+  Light.m_Diffuse = 0xff400000;
+  Light.m_Direction.set( -0.3f, 0.8f, 0.2f );
+
+  Renderer.SetLight( 1, Light );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT_NO_TEXTURE );
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, no texture, two lights" );
+}
+
+
+
+void CXtreme::DisplayScreen3dFlatTexturedTwoLights( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  XLight      Light;
+
+  memset( &Light, 0, sizeof( XLight ) );
+
+  Light.m_Type = XLight::LT_DIRECTIONAL;
+  Light.m_Ambient = 0xff404040;
+  Light.m_Diffuse = 0xff0000c0;
+  Light.m_Direction.set( 0.2f, 0.8f, -0.3f );
+
+  Renderer.SetLight( 0, Light );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE );
+  //Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  memset( &Light, 0, sizeof( XLight ) );
+
+  Light.m_Type = XLight::LT_DIRECTIONAL;
+  Light.m_Ambient = 0xff808080;
+  Light.m_Diffuse = 0xff400000;
+  Light.m_Direction.set( -0.3f, 0.8f, 0.2f );
+
+  Renderer.SetLight( 1, Light );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld = math::matrix4().Scaling( 1 / 8.0f, 1 / 8.0f, 1 / 8.0f );
+  matWorld *= ( math::matrix4().RotationY( m_Angle ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT );
+  Renderer.SetTexture( 0, m_pTexture2 );
+
+
+  Renderer.RenderVertexBuffer( m_pVBCloned );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d mesh, texture, two lights" );
+}
+
+
+
 void CXtreme::DisplayFrame( XRenderer& Renderer )
 {
+  switch ( m_Screen )
+  {
+    case 1:
+      DisplayScreenFlat( Renderer );
+      return;
+    case 2:
+      DisplayScreenFlatTextured( Renderer );
+      return;
+    case 3:
+      DisplayScreenFlatTexturedAlphaTest( Renderer );
+      return;
+    case 4:
+      DisplayScreenAlphaBlended( Renderer );
+      return;
+    case 5:
+      DisplayScreenAlphaBlendedTextured( Renderer );
+      return;
+    case 6:
+      DisplayScreenAdditive( Renderer );
+      return;
+    case 7:
+      DisplayScreenTextureAlphaOnly( Renderer );
+      return;
+    case 8:
+      DisplayScreen3dFlatLightsDisabled( Renderer );
+      return;
+    case 9:
+      DisplayScreen3dFlatTexturedLightsDisabled( Renderer );
+      return;
+    case 10:
+      DisplayScreen3dFlatNoLight( Renderer );
+      return;
+    case 11:
+      DisplayScreen3dFlatTexturedNoLight( Renderer );
+      return;
+    case 12:
+      DisplayScreen3dFlatOneLight( Renderer );
+      return;
+    case 13:
+      DisplayScreen3dFlatTexturedOneLight( Renderer );
+      return;
+    case 14:
+      DisplayScreen3dFlatTwoLights( Renderer );
+      return;
+    case 15:
+      DisplayScreen3dFlatTexturedTwoLights( Renderer );
+      return;
+  }
+  /*
+  m_pRenderClass->SetState( XRenderer::RS_CLEAR_COLOR, 0xffff00ff );
+  m_pRenderClass->Clear();
+
+  m_pRenderClass->SetShader( XRenderer::ST_FLAT );
+  m_pRenderClass->SetTexture( 0, m_pTexture );
+
+  {
+    math::matrix4     mat;
+
+    mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+    m_pRenderClass->SetTransform( XRenderer::TT_PROJECTION, mat );
+
+    XCamera cam;
+
+    cam.SetValues( GR::tVector( 0, 0, 30 ),
+                   GR::tVector( 0, 0, 0 ),
+                   GR::tVector( 0, -1, 0 ) );
+
+    m_pRenderClass->SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+    math::matrix4   matMovedCube2;
+
+    matMovedCube2 = math::matrix4().RotationZ( m_Angle ) * math::matrix4().Translation( m_fX, 0, 0 );
+    m_pRenderClass->SetTransform( XRenderer::TT_WORLD, matMovedCube2 );
+    m_pRenderClass->RenderVertexBuffer( m_pVBCloned );
+  }
+  return;*/
+
+  float     fValue = 17.18f;
+  Renderer.SetState( XRenderer::RS_FOG_START, *( GR::u32* )&fValue );
   //Renderer.Clear();
   //DisplayOpenGLDirectly( Renderer );
   //return;
@@ -526,10 +1235,10 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
   // since we're using GameStates we have to reset the Viewport to full screen!
   XViewport   vp = Renderer.Viewport();
 
-  vp.X = 0;
-  vp.Y = 0;
-  vp.Width = Renderer.Width();
-  vp.Height = Renderer.Height();
+  vp.X = 5;
+  vp.Y = 15;
+  vp.Width = Renderer.Width() - 10;
+  vp.Height = Renderer.Height() - 20;
   Renderer.SetViewport( vp );
   ++m_Frames;
 
@@ -571,6 +1280,15 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
   if ( m_DisplayMode == DM_3D_2_LIGHTS )
   {
     m_pRenderClass->Clear();
+
+    Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+
+    XBasicFont* pFFont = (XBasicFont*)m_pFontBig;
+
+    //m_pRenderClass->RenderText2d( m_pFontBig, 20, 20, "HALLO WELT" );
+
+    Renderer.RenderTextureSection2d( 20, 20, pFFont->Letter( 'H' )->TextureSection );
+    //m_pFontBig->DrawLetter( 20, 20, 'H', 0xffffffff );
 
     Display2LightScene( Renderer );
     return;
@@ -883,6 +1601,8 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
   mat.OrthoLH( (float)( rc.right - rc.left ), (float)( rc.bottom - rc.top ), 0.0f, 110.0f );
   m_pRenderClass->SetTransform( XRenderer::TT_PROJECTION, mat );
 
+  
+
   /*
   m_pRenderClass->SetState( XRenderer::RS_COLOR_OP,     XRenderer::RSV_MODULATE );
   m_pRenderClass->SetState( XRenderer::RS_COLOR_ARG_1, XRenderer::RSV_DIFFUSE );
@@ -1021,9 +1741,9 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
                                 GR::tVector( 10, 10, 0 ),
                                 0xffffffff );
 
-    m_pRenderClass->RenderText2d( m_pFont, 50, 50, "Hurz", 0.5f, 0.5f, 0xffffffff );
+    m_pRenderClass->RenderText2d( m_pFont, 250, 250, "Hurz", 0.5f, 0.5f, 0xffffffff );
     m_pRenderClass->RenderText( m_pFont, GR::tVector( 3.0f, 0.0f, 0.0f ), 
-                                "Wullewatz", 
+                                "Wullewatz!", 
                                 m_vectRotatedPos,
                                 0xffff00ff );
     m_pRenderClass->RenderText( m_pFont, GR::tVector( 1.0f, 0.0f, 0.0f ), "Wullewatz", 
@@ -1097,9 +1817,7 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
   m_pRenderClass->RenderTextureSection2d( 340, 320, XTextureSection( m_pTextureColorKey, 0, 0, 64, 64 ), 0xffffffff );
 
 
-  GUIComponentDisplayer::Instance().DisplayAllControls();
-
-  //m_pRenderClass->SetTexture( 0, m_pTextureColorKey );
+  //GUIComponentDisplayer::Instance().DisplayAllControls();
 
   XViewport     vpOld = m_pRenderClass->Viewport();
 
@@ -1369,10 +2087,10 @@ void CXtreme::RestoreData()
 
       m_pTexture = m_pRenderClass->LoadTexture( CMisc::AppPath( "test.igf" ).c_str() );
       m_pTextureColorKey = m_pRenderClass->LoadTexture( CMisc::AppPath( "colorkeytexture.igf" ).c_str(), GR::Graphic::IF_UNKNOWN, 0xffff00ff );
-      m_pRenderClass->SetState( XRenderer::RS_CLEAR_COLOR, 0xff808080 );
+      m_pRenderClass->SetState( XRenderer::RS_CLEAR_COLOR, 0xfff08080 );
 
       m_pFont = m_pRenderClass->LoadFontSquare( CMisc::AppPath( "font.tga" ).c_str(), XFont::FLF_SQUARED_ONE_FONT | XFont::FLF_ALPHA_BIT );
-
+      m_pFontBig = m_pRenderClass->LoadFont( CMisc::AppPath( "Baveuse 3D40c.igf" ), 0xffff00ff );
 
       /*
       m_pVB = m_pRenderClass->CreateVertexBuffer( IVertexBuffer::VFF_XYZ | IVertexBuffer::VFF_DIFFUSE | IVertexBuffer::VFF_TEXTURECOORD );
@@ -1612,7 +2330,7 @@ LRESULT CXtreme::WindowProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
   {
     case WM_CREATE:
       {
-        GUIButton*   pButton = new GUIButton( 600, 440, 40, 40, "OK" );
+        GUIButton*   pButton = new GUIButton( 600, 400, 40, 40, "OK" );
         GUIComponentDisplayer::Instance().Add( pButton );
 
         if ( m_pInputClass )
@@ -1647,6 +2365,9 @@ LRESULT CXtreme::WindowProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
     case WM_CHAR:
       switch ( (char)wParam )
       {
+        case 's':
+          m_Screen = ( m_Screen + 1 ) % 16;
+          break;
         case '1':
           axis = ( axis + 1 ) % 3;
           break;
@@ -1853,6 +2574,10 @@ LRESULT CXtreme::WindowProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
             break;
           case ID_RENDERER_OPENGL:
             m_NextRenderer = "openglrenderer.dll";
+            m_pVBTest = NULL;
+            break;
+          case ID_RENDERER_OPENGL_SHADER:
+            m_NextRenderer = "openglshaderrenderer.dll";
             m_pVBTest = NULL;
             break;
           case ID_RENDERER_VULKAN:

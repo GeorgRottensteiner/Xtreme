@@ -76,7 +76,8 @@
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetPath) ..\xtreme3d
-copy $(TargetPath) ..\xtremetest</Command>
+copy $(TargetPath) ..\xtremetest
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,7 +101,8 @@ copy $(TargetPath) ..\xtremetest</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetPath) ..\xtreme3d
-copy $(TargetPath) ..\xtremetest</Command>
+copy $(TargetPath) ..\xtremetest
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

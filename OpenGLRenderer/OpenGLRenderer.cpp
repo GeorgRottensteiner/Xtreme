@@ -27,7 +27,7 @@ BOOL APIENTRY DllMain( HANDLE hModule,
                               // process's address space
       //DisableThreadLibraryCalls( (HMODULE)hModule );
 
-      pOpenGLRendererInstance = new OpenGLRenderClass( (HINSTANCE)hModule );
+      pOpenGLRendererInstance = new OpenGLRenderClass();
       // This tells the system we don't want
       // DLL_THREAD_ATTACH and DLL_THREAD_DETACH
       // modifications sent to the specified

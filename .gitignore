@@ -47,3 +47,7 @@
 /XtremeTest/*.aps
 *.suo
 /Xtreme.VC.db
+/Xtreme3d/OpenGLShaderRenderer.dll
+/Xtreme3d/OpenGLES20Renderer.dll
+/XtremeTest/OpenGLShaderRenderer.dll
+/XtremeTest/OpenGLES20Renderer.dll

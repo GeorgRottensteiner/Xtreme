@@ -24,6 +24,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DX8OggPlayer", "DX8OggPlaye
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XtremeTest", "XtremeTest\XtremeTest.vcxproj", "{D9694EE0-34FA-4EDA-8A40-EDEE2DD2461C}"
 	ProjectSection(ProjectDependencies) = postProject
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325} = {78BA4140-D4DF-4BE7-97AC-0601421A7325}
 		{ED9FAA4A-A959-4725-9BB3-EE0AB0328012} = {ED9FAA4A-A959-4725-9BB3-EE0AB0328012}
 		{6804905F-B5D0-4C5B-A03E-053D76FCDE63} = {6804905F-B5D0-4C5B-A03E-053D76FCDE63}
 		{3B9C036F-3831-4DDB-A538-30E0F4F20880} = {3B9C036F-3831-4DDB-A538-30E0F4F20880}
@@ -50,6 +51,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLShaderRenderer", "OpenGLShaderRenderer\OpenGLShaderRenderer.vcxproj", "{78BA4140-D4DF-4BE7-97AC-0601421A7325}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +160,14 @@ Global
 		{A996A516-D9A4-44F4-8595-059874F6C478}.Release|Win32.Build.0 = Release|Win32
 		{A996A516-D9A4-44F4-8595-059874F6C478}.Release|x64.ActiveCfg = Release|x64
 		{A996A516-D9A4-44F4-8595-059874F6C478}.Release|x64.Build.0 = Release|x64
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Debug|Win32.ActiveCfg = Debug|Win32
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Debug|Win32.Build.0 = Debug|Win32
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Debug|x64.ActiveCfg = Debug|x64
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Debug|x64.Build.0 = Debug|x64
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Release|Win32.ActiveCfg = Release|Win32
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Release|Win32.Build.0 = Release|Win32
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Release|x64.ActiveCfg = Release|x64
+		{78BA4140-D4DF-4BE7-97AC-0601421A7325}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -27,12 +27,12 @@ LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE
+2 TEXTINCLUDE 
 BEGIN
     "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
     "#include ""windows.h""\r\n"
@@ -40,7 +40,7 @@ BEGIN
     "\0"
 END
 
-3 TEXTINCLUDE
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -69,7 +69,8 @@ BEGIN
             MENUITEM "DirectX 9",                   ID_RENDERER_DIRECTX9
             MENUITEM "DirectX 9 Shader",            ID_RENDERER_DIRECTX9SHADER
             MENUITEM "DirectX 11",                  ID_RENDERER_DIRECTX11
-            MENUITEM "OpenGL ?",                    ID_RENDERER_OPENGL
+            MENUITEM "OpenGL",                      ID_RENDERER_OPENGL
+            MENUITEM "OpenGL Shader",               ID_RENDERER_OPENGL_SHADER
             MENUITEM "Vulkan",                      ID_RENDERER_VULKAN
             MENUITEM "Toggle FullScreen",           ID_RENDERER_TOGGLEFULLSCREEN
             MENUITEM "None",                        ID_RENDERER_NONE

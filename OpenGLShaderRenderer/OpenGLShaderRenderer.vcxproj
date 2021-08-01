@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OpenGLShaderRendererMain.cpp" />
+    <ClCompile Include="P:\Common\DateTime\DateTime.cpp" />
+    <ClCompile Include="P:\Common\debug\DebugService.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ContextDescriptor.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GDIPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\GFXHelper.cpp" />
+    <ClCompile Include="p:\Common\Grafik\GfxPage.cpp" />
+    <ClCompile Include="P:\Common\Grafik\Image.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageData.cpp" />
+    <ClCompile Include="p:\Common\Grafik\ImageFormate\ImageFormatManager.cpp" />
+    <ClCompile Include="p:\Common\Grafik\Palette.cpp" />
+    <ClCompile Include="p:\Common\Io\FileStream.cpp" />
+    <ClCompile Include="P:\Common\IO\FileUtil.cpp" />
+    <ClCompile Include="p:\Common\Lang\RefCountObject.cpp" />
+    <ClCompile Include="p:\Common\Lang\Service.cpp" />
+    <ClCompile Include="P:\Common\Math\MathUtil.cpp" />
+    <ClCompile Include="p:\Common\Memory\ByteBuffer.cpp" />
+    <ClCompile Include="P:\Common\Misc\Format.cpp" />
+    <ClCompile Include="p:\Common\Misc\Misc.cpp" />
+    <ClCompile Include="p:\Common\String\Convert.cpp" />
+    <ClCompile Include="p:\Common\String\Path.cpp" />
+    <ClCompile Include="p:\Common\String\XML.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\LineCache.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\OpenGLShaderRenderClass.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\OpenGLShaderTexture.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\OpenGLShaderVertexBuffer.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\PixelShader.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\QuadCache.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\TriangleCache.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\OpenGLShader\VertexShader.cpp" />
+    <ClCompile Include="p:\Common\Xtreme\XAsset\XAssetLoader.cpp" />
+    <ClCompile Include="p:\Common\Xtreme\XBasicFont.cpp" />
+    <ClCompile Include="p:\Common\Xtreme\XBasicRenderer.cpp" />
+    <ClCompile Include="p:\Common\Xtreme\XBasicVertexBuffer.cpp" />
+    <ClCompile Include="p:\Common\Xtreme\XBoundingBox.cpp" />
+    <ClCompile Include="P:\Common\Xtreme\XMesh.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="P:\Common\DateTime\DateTime.h" />
+    <ClInclude Include="P:\Common\debug\DebugService.h" />
+    <ClInclude Include="P:\Common\Grafik\ContextDescriptor.h" />
+    <ClInclude Include="P:\Common\Grafik\GDIPage.h" />
+    <ClInclude Include="P:\Common\Grafik\GFXHelper.h" />
+    <ClInclude Include="p:\Common\Grafik\GfxPage.h" />
+    <ClInclude Include="P:\Common\Grafik\Image.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageData.h" />
+    <ClInclude Include="p:\Common\Grafik\ImageFormate\ImageFormatManager.h" />
+    <ClInclude Include="p:\Common\Grafik\Palette.h" />
+    <ClInclude Include="p:\Common\Io\FileStream.h" />
+    <ClInclude Include="P:\Common\IO\FileUtil.h" />
+    <ClInclude Include="p:\Common\Lang\RefCountObject.h" />
+    <ClInclude Include="p:\Common\Lang\Service.h" />
+    <ClInclude Include="P:\Common\Math\MathUtil.h" />
+    <ClInclude Include="p:\Common\Memory\ByteBuffer.h" />
+    <ClInclude Include="P:\Common\Misc\format.h" />
+    <ClInclude Include="p:\Common\Misc\Misc.h" />
+    <ClInclude Include="p:\Common\String\Convert.h" />
+    <ClInclude Include="p:\Common\String\Path.h" />
+    <ClInclude Include="p:\Common\String\XML.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\LineCache.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\OpenGLShaderRenderClass.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\OpenGLShaderTexture.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\OpenGLShaderVertexBuffer.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\PixelShader.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\QuadCache.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\TriangleCache.h" />
+    <ClInclude Include="P:\Common\Xtreme\OpenGLShader\VertexShader.h" />
+    <ClInclude Include="p:\Common\Xtreme\XAsset\XAssetLoader.h" />
+    <ClInclude Include="p:\Common\Xtreme\XBasicFont.h" />
+    <ClInclude Include="p:\Common\Xtreme\XBasicRenderer.h" />
+    <ClInclude Include="p:\Common\Xtreme\XBasicVertexBuffer.h" />
+    <ClInclude Include="p:\Common\Xtreme\XBoundingBox.h" />
+    <ClInclude Include="p:\Common\Xtreme\XFont.h" />
+    <ClInclude Include="P:\Common\Xtreme\XMesh.h" />
+    <ClInclude Include="p:\Common\Xtreme\XRenderer.h" />
+    <ClInclude Include="p:\Common\Xtreme\XVertexBuffer.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{78ba4140-d4df-4be7-97ac-0601421a7325}</ProjectGuid>
+    <RootNamespace>OpenGLShaderRenderer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\SDK\OpenGL;p:\Common;$(IncludePath);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\SDK\OpenGL;p:\Common;$(IncludePath);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\SDK\OpenGL;p:\Common;$(IncludePath);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\SDK\OpenGL;p:\Common;$(IncludePath);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;OPENGLShaderRENDERER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;OPENGLShaderRENDERER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;OPENGLShaderRENDERER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;OPENGLShaderRENDERER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>p:\common</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\xtreme3d
+copy $(TargetPath) ..\xtremetest
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

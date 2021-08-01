@@ -40,6 +40,7 @@ class CXtreme : public XFrameApp
     XVertexBuffer*      m_pVBTest;
 
     XFont*              m_pFont;
+    XFont*              m_pFontBig;
 
     float               m_fX;
 
@@ -83,6 +84,8 @@ class CXtreme : public XFrameApp
 
     X2dRenderer*        m_pRenderer2d;
 
+    int                 m_Screen;
+
 
 
   public:
@@ -113,6 +116,27 @@ class CXtreme : public XFrameApp
 
     void DisplayOpenGLDirectly( XRenderer& Renderer );
 
+
+
+    void                DisplayScreenFlat( XRenderer& Renderer );
+    void                DisplayScreenFlatTextured( XRenderer& Renderer );
+    void                DisplayScreenFlatTexturedAlphaTest( XRenderer& Renderer );
+    void                DisplayScreenAlphaBlended( XRenderer& Renderer );
+    void                DisplayScreenAlphaBlendedTextured( XRenderer& Renderer );
+    void                DisplayScreenAdditive( XRenderer& Renderer );
+    void                DisplayScreenTextureAlphaOnly( XRenderer& Renderer );
+
+    void                DisplayScreen3dFlatLightsDisabled( XRenderer& Renderer );
+    void                DisplayScreen3dFlatTexturedLightsDisabled( XRenderer& Renderer );
+
+    void                DisplayScreen3dFlatNoLight( XRenderer& Renderer );
+    void                DisplayScreen3dFlatTexturedNoLight( XRenderer& Renderer );
+
+    void                DisplayScreen3dFlatOneLight( XRenderer& Renderer );
+    void                DisplayScreen3dFlatTexturedOneLight( XRenderer& Renderer );
+
+    void                DisplayScreen3dFlatTwoLights( XRenderer& Renderer );
+    void                DisplayScreen3dFlatTexturedTwoLights( XRenderer& Renderer );
 };
 
 

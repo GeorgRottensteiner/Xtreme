@@ -155,7 +155,8 @@ copy $(TargetPath) ..\xtremetest
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetPath) ..\xtreme3d
-copy $(TargetPath) ..\xtremetest</Command>
+copy $(TargetPath) ..\xtremetest
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
