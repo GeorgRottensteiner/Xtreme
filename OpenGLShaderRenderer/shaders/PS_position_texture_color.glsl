@@ -45,6 +45,6 @@ void main()
   vec4 textureColor = texture( shaderTexture, input.tex ) * input.color;
   
   textureColor.rgb = mix( textureColor.rgb, vFogColor.rgb, input.FogFactor );
-
+  
   _psout_main = textureColor;
 }

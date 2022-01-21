@@ -51,7 +51,7 @@ CXtreme::CXtreme() :
   m_pRenderer2d( NULL ),
   m_Screen( 0 )
 {
-  m_Screen = 13;
+  m_Screen = 12;
 
   m_Frames = 0;
   m_fLastFPSStopTime = 0.0f;

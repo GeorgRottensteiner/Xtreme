@@ -109,18 +109,19 @@ void main( )
 
   output.pos = pos;
 
-  // transpose of inverse of upper/left 3x3
-  mat3x3  matN = transpose( inverse( mat3x3( model ) * mat3x3( view ) ) );
-
-  //set required lighting vectors for interpolation
-  vec3 normal = matN * input.normal;
+  /*
+  TODO
+  output.tex = mul( float4( input.tex, 0.0f, 1.0f ), textureTransform );
+  */
+  
+  vec3 normal = normalize( input.normal );
+  normal *= mat3x3( model ) * mat3x3( view );
   normal = normalize( normal );
-
+  
   vec4  totalAmbient = Ambient;
   vec4  totalDiffuse = vec4( 0, 0, 0, 0 );
-  vec4  specularEffect = vec4( 0, 0, 0, 0 );
+  vec4  specularEffect = vec4( 0, 0, 0, 0 );  
   
-
   for ( int i = 0; i < 1; ++i )
   {
     // Invert the light direction for calculations.
@@ -128,25 +129,24 @@ void main( )
     //vec3 L = normalize( Light[i].Direction );
     float NdotL = max( dot( normal, L ), 0 );
     totalAmbient += Light[i].Ambient;
-    
+
     //compute diffuse color
-    totalDiffuse += NdotL * Light[i].Diffuse * _Material.MaterialDiffuse;
+    totalDiffuse += NdotL * Light[i].Diffuse;
 
     //add specular component
-    /*
-    if ( bSpecular )
-    {
-    vec3 H = normalize( L + V );   //half vector
-        Out.ColorSpec = pow( max( 0, dot( H, N ) ), fMaterialPower ) * lights[i].vSpecular;
-    }*/
+    //if ( bSpecular )
+    //{
+    //vec3 H = normalize( L + V );   //half vector
+    //    Out.ColorSpec = pow( max( 0, dot( H, N ) ), fMaterialPower ) * lights[i].vSpecular;
+    //}
   }
   totalAmbient *= _Material.MaterialAmbient;
-  totalDiffuse *= 3;
+  totalDiffuse *= _Material.MaterialDiffuse;
 
   specularEffect *= _Material.MaterialSpecular;
 
   vec4  totalFactor = totalAmbient + totalDiffuse + specularEffect;
-  
+
   //apply fog    
   // fog does nothing here
   vec4 P = vec4( input.pos, 1.0 ) * model;
@@ -163,14 +163,13 @@ void main( )
            * when_eq( iFogType, FOG_TYPE_LINEAR );   
            
   output.FogFactor = 1.0 - fog;        
-
+  
   output.color = input.color * totalFactor;
 
 
   //saturate
   output.color = clamp( output.color, vec4( 0.0, 0.0, 0.0, 0.0), vec4( 1.0, 1.0, 1.0, 1.0) );
   
-
   gl_Position = output.pos;
   _vsout_main_color = output.color;
   _vsout_main_FogFactor = output.FogFactor;

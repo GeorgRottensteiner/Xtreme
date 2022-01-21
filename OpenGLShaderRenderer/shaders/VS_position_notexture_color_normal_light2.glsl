@@ -109,38 +109,34 @@ void main( )
 
   output.pos = pos;
 
-  // transpose of inverse of upper/left 3x3
-  mat3x3  matN = transpose( inverse( mat3x3( model ) * mat3x3( view ) ) );
-
-  //set required lighting vectors for interpolation
-  vec3 normal = matN * input.normal;
+    vec3 normal = normalize( input.normal );
+  normal *= mat3x3( model ) * mat3x3( view );
   normal = normalize( normal );
-
+  
   vec4  totalAmbient = Ambient;
   vec4  totalDiffuse = vec4( 0, 0, 0, 0 );
-  vec4  specularEffect = vec4( 0, 0, 0, 0 );
+  vec4  specularEffect = vec4( 0, 0, 0, 0 );  
   
-
   for ( int i = 0; i < 2; ++i )
   {
     // Invert the light direction for calculations.
     vec3 L = mat3x3( viewIT ) * ( normalize( Light[i].Direction ) );
     //vec3 L = normalize( Light[i].Direction );
     float NdotL = max( dot( normal, L ), 0 );
-    totalAmbient += Light[i].Ambient * _Material.MaterialAmbient;
-    
+    totalAmbient += Light[i].Ambient;
+
     //compute diffuse color
-    totalDiffuse += NdotL * Light[i].Diffuse * _Material.MaterialDiffuse;
+    totalDiffuse += NdotL * Light[i].Diffuse;
 
     //add specular component
-    /*
-    if ( bSpecular )
-    {
-    vec3 H = normalize( L + V );   //half vector
-        Out.ColorSpec = pow( max( 0, dot( H, N ) ), fMaterialPower ) * lights[i].vSpecular;
-    }*/
+    //if ( bSpecular )
+    //{
+    //vec3 H = normalize( L + V );   //half vector
+    //    Out.ColorSpec = pow( max( 0, dot( H, N ) ), fMaterialPower ) * lights[i].vSpecular;
+    //}
   }
-  totalDiffuse *= 3;
+  totalAmbient *= _Material.MaterialAmbient;
+  totalDiffuse *= _Material.MaterialDiffuse;
 
   specularEffect *= _Material.MaterialSpecular;
 
