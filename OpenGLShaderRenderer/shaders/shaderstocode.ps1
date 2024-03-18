@@ -1,6 +1,7 @@
 $fileEntries = [IO.Directory]::EnumerateFiles( "d:/projekte/Xtreme/OpenGLShaderRenderer/shaders", "*.glsl" ); 
 
 [IO.File]::Delete( "p:/common/Xtreme/OpenGLShader/shadercode.inl" );
+[IO.File]::Delete( "p:/common/Xtreme/OpenGLShader/shadercodees.inl" );
 
 $resultContent = "";
 $lineBreak = "`n";  
@@ -54,5 +55,8 @@ foreach( $fileName in $fileEntries )
   $resultContent += $line;
 
 }
+$resultContentES = $resultContent.Replace( "#version 410 core", "#version 320 es" )
+
 
 [IO.File]::WriteAllText( "P:\Common\Xtreme\OpenGLShader\shadercode.inl", $resultContent )
+[IO.File]::WriteAllText( "P:\Common\Xtreme\OpenGLShader\shadercodees.inl", $resultContentES )

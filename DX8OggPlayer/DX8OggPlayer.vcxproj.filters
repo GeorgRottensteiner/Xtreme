@@ -29,6 +29,9 @@
     <ClCompile Include="P:\Common\Memory\ByteBuffer.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="P:\Common\Misc\Format.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DX8OggPlayer.h">
@@ -47,6 +50,9 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="P:\Common\Memory\ByteBuffer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Misc\Format.h">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>

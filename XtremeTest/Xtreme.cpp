@@ -1185,6 +1185,8 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
       return;
     case 12:
       DisplayScreen3dFlatOneLight( Renderer );
+      Renderer.SetShader( XRenderer::ST_ALPHA_BLEND_AND_TEST );
+      theApp.Print( 2, 20, "ABCabc" );
       return;
     case 13:
       DisplayScreen3dFlatTexturedOneLight( Renderer );
@@ -2080,6 +2082,8 @@ void CXtreme::RestoreData()
         m_pVBCloned = m_pRenderClass->CreateVertexBuffer( m_pVB );
       }
 
+      auto pTex = m_pRenderClass->LoadTexture( CMisc::AppPath( "test-alpha.gri" ).c_str() );
+
       m_pTextureTGA = m_pRenderClass->LoadTexture( CMisc::AppPath( "deco.tga" ).c_str() );
 
       m_pTexture2 = m_pRenderClass->LoadTexture( CMisc::AppPath( "test2.igf" ).c_str(), GR::Graphic::IF_UNKNOWN, 0xffff00ff, 0, 0xff000000 );
@@ -2132,7 +2136,8 @@ void CXtreme::RestoreData()
     {
       ConsolePrint( "SoundClass Initialized" );
        
-      m_SoundClick = m_pSoundClass->LoadWave( CMisc::AppPath( "click.wav" ).c_str() );
+      //m_SoundClick = m_pSoundClass->LoadWave( CMisc::AppPath( "click.wav" ).c_str() );
+      m_SoundClick = m_pSoundClass->LoadWave( "C:\\Users\\Georg\\Desktop\\Laser (1).wav" );
     }
   }
 
@@ -2602,6 +2607,7 @@ LRESULT CXtreme::WindowProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
             m_NewInput = CMisc::AppPath( "wininput.dll" );
             break;
           case ID_INPUT_DXINPUT:
+            m_DebugService.LogEnable( "Input.Full" );
             m_NewInput = CMisc::AppPath( "dxinput.dll" );
             break;
           case ID_INPUT_RAWINPUT:

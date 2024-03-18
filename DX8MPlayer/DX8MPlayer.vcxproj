@@ -112,6 +112,7 @@ copy $(TargetPath) ..\xtreme3d
     <ClCompile Include="DX8MPlayer.cpp" />
     <ClCompile Include="p:\Common\Lang\Service.cpp" />
     <ClCompile Include="P:\Common\Memory\ByteBuffer.cpp" />
+    <ClCompile Include="P:\Common\Misc\Format.cpp" />
     <ClCompile Include="P:\Common\String\Convert.cpp" />
     <ClCompile Include="XMPlayer.cpp" />
   </ItemGroup>
@@ -119,6 +120,7 @@ copy $(TargetPath) ..\xtreme3d
     <ClInclude Include="DX8MPlayer.h" />
     <ClInclude Include="p:\Common\Lang\Service.h" />
     <ClInclude Include="P:\Common\Memory\ByteBuffer.h" />
+    <ClInclude Include="P:\Common\Misc\Format.h" />
     <ClInclude Include="P:\Common\String\Convert.h" />
     <ClInclude Include="P:\Common\XSound\XMusic.h" />
     <ClInclude Include="XMPlayer.h" />

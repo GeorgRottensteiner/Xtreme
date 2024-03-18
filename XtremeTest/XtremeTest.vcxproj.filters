@@ -12,6 +12,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
     </Filter>
+    <Filter Include="Common\png">
+      <UniqueIdentifier>{b0de4cc1-23a1-4fe9-8cc5-e86d4c452240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\zlib">
+      <UniqueIdentifier>{2ab657fb-bd69-4bbd-8a46-8793b14664f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -221,6 +227,72 @@
     <ClInclude Include="P:\Common\Xtreme\Environment\XWindowWin32.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatGRI.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\zconf.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\zlib.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatPNG.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\png.h">
+      <Filter>Common\png</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngconf.h">
+      <Filter>Common\png</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngdebug.h">
+      <Filter>Common\png</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pnginfo.h">
+      <Filter>Common\png</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pnglibconf.h">
+      <Filter>Common\png</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngpriv.h">
+      <Filter>Common\png</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngstruct.h">
+      <Filter>Common\png</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\crc32.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\deflate.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\gzguts.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\inffast.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\inffixed.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\inflate.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\inftrees.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\trees.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\zconf.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\zlib.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\libs\zlib\zutil.h">
+      <Filter>Common\zlib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Xtreme.cpp">
@@ -429,6 +501,90 @@
     </ClCompile>
     <ClCompile Include="P:\Common\Xtreme\Environment\XWindowWin32.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatGRI.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatPNG.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwutil.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\png.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngerror.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngget.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngmem.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngpread.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngread.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngrio.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngrtran.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngrutil.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngset.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngtrans.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwio.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwrite.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwtran.c">
+      <Filter>Common\png</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\adler32.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\compress.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\crc32.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\deflate.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\infback.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\inffast.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\inflate.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\inftrees.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\trees.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\uncompr.c">
+      <Filter>Common\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="P:\Common\libs\zlib\zutil.c">
+      <Filter>Common\zlib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -13,16 +13,17 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D9694EE0-34FA-4EDA-8A40-EDEE2DD2461C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -113,9 +114,20 @@
     <ClInclude Include="P:\Common\Grafik\Image.h" />
     <ClInclude Include="P:\Common\Grafik\ImageData.h" />
     <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatBMP.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatGRI.h" />
     <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatIGF.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatPNG.h" />
     <ClInclude Include="P:\Common\Grafik\ImageFormate\FormatTGA.h" />
     <ClInclude Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\png.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngconf.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngdebug.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pnginfo.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pnglibconf.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngpriv.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\pngstruct.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\zconf.h" />
+    <ClInclude Include="P:\Common\Grafik\ImageFormate\PNG\zlib.h" />
     <ClInclude Include="P:\Common\Grafik\Palette.h" />
     <ClInclude Include="P:\Common\GR\DataBase\DataBase.h" />
     <ClInclude Include="P:\Common\GR\DataBase\DataBaseTable.h" />
@@ -131,6 +143,17 @@
     <ClInclude Include="P:\Common\Lang\EventQueue.h" />
     <ClInclude Include="P:\Common\Lang\RefCountObject.h" />
     <ClInclude Include="p:\Common\Lang\Service.h" />
+    <ClInclude Include="P:\Common\libs\zlib\crc32.h" />
+    <ClInclude Include="P:\Common\libs\zlib\deflate.h" />
+    <ClInclude Include="P:\Common\libs\zlib\gzguts.h" />
+    <ClInclude Include="P:\Common\libs\zlib\inffast.h" />
+    <ClInclude Include="P:\Common\libs\zlib\inffixed.h" />
+    <ClInclude Include="P:\Common\libs\zlib\inflate.h" />
+    <ClInclude Include="P:\Common\libs\zlib\inftrees.h" />
+    <ClInclude Include="P:\Common\libs\zlib\trees.h" />
+    <ClInclude Include="P:\Common\libs\zlib\zconf.h" />
+    <ClInclude Include="P:\Common\libs\zlib\zlib.h" />
+    <ClInclude Include="P:\Common\libs\zlib\zutil.h" />
     <ClInclude Include="P:\Common\MasterFrame\Console.h" />
     <ClInclude Include="P:\Common\MasterFrame\XFrameApp.h" />
     <ClInclude Include="P:\Common\Math\MathUtil.h" />
@@ -184,9 +207,26 @@
     <ClCompile Include="P:\Common\Grafik\Image.cpp" />
     <ClCompile Include="P:\Common\Grafik\ImageData.cpp" />
     <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatBMP.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatGRI.cpp" />
     <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatIGF.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatPNG.cpp" />
     <ClCompile Include="P:\Common\Grafik\ImageFormate\FormatTGA.cpp" />
     <ClCompile Include="P:\Common\Grafik\ImageFormate\ImageFormatManager.cpp" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\png.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngerror.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngget.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngmem.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngpread.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngread.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngrio.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngrtran.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngrutil.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngset.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngtrans.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwio.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwrite.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwtran.c" />
+    <ClCompile Include="P:\Common\Grafik\ImageFormate\PNG\pngwutil.c" />
     <ClCompile Include="P:\Common\Grafik\Palette.cpp" />
     <ClCompile Include="P:\Common\GR\DataBase\DataBase.cpp" />
     <ClCompile Include="P:\Common\GR\DataBase\DataBaseTable.cpp" />
@@ -202,6 +242,17 @@
     <ClCompile Include="P:\Common\Lang\EventQueue.cpp" />
     <ClCompile Include="P:\Common\Lang\RefCountObject.cpp" />
     <ClCompile Include="p:\Common\Lang\Service.cpp" />
+    <ClCompile Include="P:\Common\libs\zlib\adler32.c" />
+    <ClCompile Include="P:\Common\libs\zlib\compress.c" />
+    <ClCompile Include="P:\Common\libs\zlib\crc32.c" />
+    <ClCompile Include="P:\Common\libs\zlib\deflate.c" />
+    <ClCompile Include="P:\Common\libs\zlib\infback.c" />
+    <ClCompile Include="P:\Common\libs\zlib\inffast.c" />
+    <ClCompile Include="P:\Common\libs\zlib\inflate.c" />
+    <ClCompile Include="P:\Common\libs\zlib\inftrees.c" />
+    <ClCompile Include="P:\Common\libs\zlib\trees.c" />
+    <ClCompile Include="P:\Common\libs\zlib\uncompr.c" />
+    <ClCompile Include="P:\Common\libs\zlib\zutil.c" />
     <ClCompile Include="P:\Common\MasterFrame\Console.cpp" />
     <ClCompile Include="P:\Common\MasterFrame\XFrameApp.cpp" />
     <ClCompile Include="P:\Common\Math\MathUtil.cpp" />

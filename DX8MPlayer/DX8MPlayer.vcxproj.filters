@@ -29,6 +29,9 @@
     <ClCompile Include="XMPlayer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="P:\Common\Misc\Format.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DX8MPlayer.h">
@@ -48,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="XMPlayer.h">
       <Filter>Quelldateien</Filter>
+    </ClInclude>
+    <ClInclude Include="P:\Common\Misc\Format.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
