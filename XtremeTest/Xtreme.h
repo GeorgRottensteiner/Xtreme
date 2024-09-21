@@ -137,6 +137,8 @@ class CXtreme : public XFrameApp
 
     void                DisplayScreen3dFlatTwoLights( XRenderer& Renderer );
     void                DisplayScreen3dFlatTexturedTwoLights( XRenderer& Renderer );
+
+    void                DisplayScreen3dQuadOneLight( XRenderer& Renderer );
 };
 
 

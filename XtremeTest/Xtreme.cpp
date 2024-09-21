@@ -1146,6 +1146,107 @@ void CXtreme::DisplayScreen3dFlatTexturedTwoLights( XRenderer& Renderer )
 
 
 
+void CXtreme::DisplayScreen3dQuadOneLight( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  XMaterial       material;
+
+  ZeroMemory( &material, sizeof( XMaterial ) );
+  material.Ambient = 0xff808080;
+  material.Diffuse = 0xffffffff;
+  Renderer.SetMaterial( material );
+
+  XLight      Light;
+
+  memset( &Light, 0, sizeof( XLight ) );
+
+  Light.m_Type = XLight::LT_DIRECTIONAL;
+  Light.m_Ambient = 0xff404040;
+  Light.m_Diffuse = 0xffffffff;
+  Light.m_Direction.set( 0.2f, 0.8f, -0.3f );
+
+  Renderer.SetLight( 0, Light );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_ENABLE );
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE, 1 );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_ENABLE );
+
+  Renderer.SetState( XRenderer::RS_AMBIENT, 0xff808080 );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  cam.SetValues( GR::tVector( 15, 15, 15 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( -1, -1, 1 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+
+  math::matrix4   matWorld;
+
+  matWorld.Scaling( 4.0f, 4.0f, 4.0f );
+  matWorld *= ( math::matrix4().RotationZ( m_Angle * 0.1f ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  Renderer.SetShader( XRenderer::ST_FLAT );
+  Renderer.SetTexture( 0, m_pTexture );
+  Renderer.RenderQuad( GR::tVector( -2.0f, -2.0f, 0.0f ), 
+                       GR::tVector( 0.0f, -2.0f, 0.0f ),
+                       GR::tVector( -2.0f, 0.0f, 0.0f ),
+                       GR::tVector( 0.0f, 0.0f, 1.0f ),
+                       0.0f, 0.0f,
+                       1.0f, 0.0f,
+                       0.0f, 1.0f, 
+                       1.0f, 1.0f,
+                       0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff );
+                       //0xffff0000, 0xff00ff00, 0xff0000ff, 0xffffffff );
+  Renderer.RenderQuad( GR::tVector( 0.0f, -2.0f, 0.0f ),
+                       GR::tVector( 2.0f, -2.0f, 0.0f ),
+                       GR::tVector( 0.0f, 0.0f, 1.0f ),
+                       GR::tVector( 2.0f, 0.0f, 0.0f ),
+                       0.0f, 0.0f,
+                       1.0f, 0.0f,
+                       0.0f, 1.0f,
+                       1.0f, 1.0f,
+                       0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff );
+                       //0xffff0000, 0xff00ff00, 0xff0000ff, 0xffffffff );
+  Renderer.RenderQuad( GR::tVector( -2.0f, 0.0f, 0.0f ),
+                       GR::tVector( 0.0f, 0.0f, 1.0f ),
+                       GR::tVector( -2.0f, 2.0f, 0.0f ),
+                       GR::tVector( 0.0f, 2.0f, 0.0f ),
+                       0.0f, 0.0f,
+                       1.0f, 0.0f,
+                       0.0f, 1.0f,
+                       1.0f, 1.0f,
+                       0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff );
+                       //0xffff0000, 0xff00ff00, 0xff0000ff, 0xffffffff );
+  Renderer.RenderQuad( GR::tVector( 0.0f, 0.0f, 1.0f ),
+                       GR::tVector( 2.0f, 0.0f, 0.0f ),
+                       GR::tVector( 0.0f, 2.0f, 0.0f ),
+                       GR::tVector( 2.0f, 2.0f, 0.0f ),
+                       0.0f, 0.0f,
+                       1.0f, 0.0f,
+                       0.0f, 1.0f,
+                       1.0f, 1.0f,
+                       0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff );
+                       //0xffff0000, 0xff00ff00, 0xff0000ff, 0xffffffff );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 80, 15, "3d quad, texture, one light" );
+}
+
+
+
 void CXtreme::DisplayFrame( XRenderer& Renderer )
 {
   switch ( m_Screen )
@@ -1196,6 +1297,9 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
       return;
     case 15:
       DisplayScreen3dFlatTexturedTwoLights( Renderer );
+      return;
+    case 16:
+      DisplayScreen3dQuadOneLight( Renderer );
       return;
   }
   /*
@@ -2371,7 +2475,7 @@ LRESULT CXtreme::WindowProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
       switch ( (char)wParam )
       {
         case 's':
-          m_Screen = ( m_Screen + 1 ) % 16;
+          m_Screen = ( m_Screen + 1 ) % 17;
           break;
         case '1':
           axis = ( axis + 1 ) % 3;
