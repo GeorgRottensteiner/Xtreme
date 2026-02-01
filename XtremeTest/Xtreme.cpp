@@ -29,6 +29,7 @@ CXtreme::CXtreme() :
   m_pTexture( NULL ),
   m_pTexture2( NULL ),
   m_pTexture3( NULL ),
+  m_pTextureA1R5G5B5( NULL ),
   m_fX( 0.0f ),
   m_pFont( NULL ),
   m_vectRotatedPos( 5.0f, 0.0f, 0.0f ),
@@ -49,9 +50,10 @@ CXtreme::CXtreme() :
   m_LightAngle( 0.0f ),
   m_TextureTransformFactor( 0.0f ),
   m_pRenderer2d( NULL ),
+  m_hinstCurrentRenderer2d( NULL ),
   m_Screen( 0 )
 {
-  m_Screen = 12;
+  m_Screen = 18;
 
   m_Frames = 0;
   m_fLastFPSStopTime = 0.0f;
@@ -1247,6 +1249,73 @@ void CXtreme::DisplayScreen3dQuadOneLight( XRenderer& Renderer )
 
 
 
+void CXtreme::DisplayScreen3dLines( XRenderer& Renderer )
+{
+  Renderer.Clear();
+
+  Renderer.SetState( XRenderer::RS_LIGHT, XRenderer::RSV_DISABLE );
+  Renderer.SetState( XRenderer::RS_LIGHTING, XRenderer::RSV_DISABLE );
+
+  math::matrix4     mat;
+
+  mat.ProjectionPerspectiveFovLH( 90, 32.0f / 24.0f, 0.1f, 100.0f );
+
+  Renderer.SetTransform( XRenderer::TT_PROJECTION, mat );
+
+  XCamera cam;
+
+  cam.SetValues( GR::tVector( 0, 0, 3 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( 0, -1, 0 ) );
+
+  cam.SetValues( GR::tVector( 15, 15, 15 ),
+                 GR::tVector( 0, 0, 0 ),
+                 GR::tVector( -1, -1, 1 ) );
+
+  Renderer.SetTransform( XRenderer::TT_VIEW, cam.GetViewMatrix() );
+  Renderer.SetShader( XRenderer::ST_FLAT_NO_TEXTURE );
+
+  math::matrix4   matWorld;
+
+  matWorld.Scaling( 4.0f, 4.0f, 4.0f );
+  matWorld *= ( math::matrix4().RotationZ( m_Angle * 0.1f ) * math::matrix4().Translation( 0.0f, 0.0f, 0.0f ) );
+
+  Renderer.SetTransform( XRenderer::TT_WORLD, matWorld );
+
+  //Renderer.SetShader( XRenderer::ST_FLAT );
+  //Renderer.SetTexture( 0, m_pTexture );
+
+  Renderer.RenderLine( GR::tVector( -2.0f, -2.0f, 0.0f ),
+                       GR::tVector( -2.0f, 0.0f, 0.0f ),
+                       0xffff00ff, 0xffffff00 );
+}
+
+
+
+void CXtreme::DisplayScreen2dTextureFormats( XRenderer& Renderer )
+{
+  XViewport     vp = Renderer.Viewport();
+
+  vp.X = 0;
+  vp.Y = 0;
+  vp.Width = Renderer.Width();
+  vp.Height = Renderer.Height();
+  Renderer.SetViewport( vp );
+  Renderer.Clear();
+  Renderer.Offset( GR::tPoint() );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_BLEND_AND_TEST );
+  Renderer.SetTexture( 0, NULL );
+  Renderer.RenderQuad2d( 15, 15, 64, 64, 0xffff00ff );
+
+  Renderer.RenderTextureSection2d( 5, 5, XTextureSection( m_pTextureA1R5G5B5, 0, 0, 64, 64 ), 0x80ffffff );
+
+  Renderer.SetShader( XRenderer::ST_ALPHA_TEST );
+  Renderer.RenderText2d( m_pFont, 0, 0, "A1R5G5B5" );
+}
+
+
+
 void CXtreme::DisplayFrame( XRenderer& Renderer )
 {
   switch ( m_Screen )
@@ -1300,6 +1369,12 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
       return;
     case 16:
       DisplayScreen3dQuadOneLight( Renderer );
+      return;
+    case 17:
+      DisplayScreen2dTextureFormats( Renderer );
+      return;
+    case 18:
+      DisplayScreen3dLines( Renderer );
       return;
   }
   /*
@@ -1401,6 +1476,13 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
   }
   else if ( m_DisplayMode == DM_3D_1_LIGHT )
   {
+    XMaterial       matt;
+
+    ZeroMemory( &matt, sizeof( XMaterial ) );
+    matt.Ambient = 0xff808080;
+    matt.Diffuse = 0xff808080;
+    m_pRenderClass->SetMaterial( matt );
+
     ++m_Frames;
 
     m_pRenderClass->Clear();
@@ -1978,6 +2060,9 @@ void CXtreme::UpdatePerDisplayFrame( const float fElapsedTime )
 
   if ( !m_NextRenderer.empty() )
   {
+    m_pFont = NULL;
+    m_pFontBig = NULL;
+
     SwitchRenderer();
     if ( m_NextRenderer == "null" )
     {
@@ -2193,7 +2278,8 @@ void CXtreme::RestoreData()
       m_pTexture2 = m_pRenderClass->LoadTexture( CMisc::AppPath( "test2.igf" ).c_str(), GR::Graphic::IF_UNKNOWN, 0xffff00ff, 0, 0xff000000 );
       m_pTexture3 = m_pRenderClass->LoadTexture( CMisc::AppPath( "test3.igf" ).c_str() );
 
-      m_pTexture = m_pRenderClass->LoadTexture( CMisc::AppPath( "test.igf" ).c_str() );
+      m_pTexture          = m_pRenderClass->LoadTexture( CMisc::AppPath( "test.igf" ).c_str() );
+      m_pTextureA1R5G5B5  = m_pRenderClass->LoadTexture( CMisc::AppPath( "x1r5g5b5.igf" ).c_str(), GR::Graphic::IF_UNKNOWN, 0xff000000 );
       m_pTextureColorKey = m_pRenderClass->LoadTexture( CMisc::AppPath( "colorkeytexture.igf" ).c_str(), GR::Graphic::IF_UNKNOWN, 0xffff00ff );
       m_pRenderClass->SetState( XRenderer::RS_CLEAR_COLOR, 0xfff08080 );
 
@@ -2475,7 +2561,7 @@ LRESULT CXtreme::WindowProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
       switch ( (char)wParam )
       {
         case 's':
-          m_Screen = ( m_Screen + 1 ) % 17;
+          m_Screen = ( m_Screen + 1 ) % 19;
           break;
         case '1':
           axis = ( axis + 1 ) % 3;
@@ -2738,10 +2824,10 @@ bool CXtreme::SwitchRenderer2d( const char* szFileName )
   }
   m_pRenderer2d = NULL;
 #if OPERATING_SUB_SYSTEM == OS_SUB_DESKTOP
-  if ( m_hinstCurrentRenderer )
+  if ( m_hinstCurrentRenderer2d )
   {
-    FreeLibrary( m_hinstCurrentRenderer );
-    m_hinstCurrentRenderer = NULL;
+    FreeLibrary( m_hinstCurrentRenderer2d );
+    m_hinstCurrentRenderer2d = NULL;
   }
 #endif
 
@@ -2752,15 +2838,15 @@ bool CXtreme::SwitchRenderer2d( const char* szFileName )
   }
 
 #if OPERATING_SUB_SYSTEM == OS_SUB_DESKTOP
-  m_hinstCurrentRenderer = LoadLibraryA( szFileName );
-  if ( m_hinstCurrentRenderer == NULL )
+  m_hinstCurrentRenderer2d = LoadLibraryA( szFileName );
+  if ( m_hinstCurrentRenderer2d == NULL )
   {
-    m_hinstCurrentRenderer = LoadLibraryA( AppPath( szFileName ).c_str() );
+    m_hinstCurrentRenderer2d = LoadLibraryA( AppPath( szFileName ).c_str() );
   }
-  if ( m_hinstCurrentRenderer )
+  if ( m_hinstCurrentRenderer2d )
   {
     typedef X2dRenderer* ( *tIFunction )( void );
-    tIFunction    fGetInterface = (tIFunction)GetProcAddress( m_hinstCurrentRenderer, "GetInterface" );
+    tIFunction    fGetInterface = (tIFunction)GetProcAddress( m_hinstCurrentRenderer2d, "GetInterface" );
 
     if ( fGetInterface )
     {

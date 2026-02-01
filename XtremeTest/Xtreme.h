@@ -30,6 +30,7 @@ class CXtreme : public XFrameApp
     XTexture*           m_pTexture;
     XTexture*           m_pTexture2;
     XTexture*           m_pTexture3;
+    XTexture*           m_pTextureA1R5G5B5;
     XTexture*           m_pTextureColorKey;
     XTexture*           m_pTextureTGA;
 
@@ -83,6 +84,7 @@ class CXtreme : public XFrameApp
     int                 m_NumLines;
 
     X2dRenderer*        m_pRenderer2d;
+    HINSTANCE           m_hinstCurrentRenderer2d;
 
     int                 m_Screen;
 
@@ -139,6 +141,10 @@ class CXtreme : public XFrameApp
     void                DisplayScreen3dFlatTexturedTwoLights( XRenderer& Renderer );
 
     void                DisplayScreen3dQuadOneLight( XRenderer& Renderer );
+
+    void                DisplayScreen2dTextureFormats( XRenderer& Renderer );
+
+    void                DisplayScreen3dLines( XRenderer& Renderer );
 };
 
 
