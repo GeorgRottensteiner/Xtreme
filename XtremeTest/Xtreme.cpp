@@ -548,6 +548,10 @@ void CXtreme::DisplayScreenFlat( XRenderer& Renderer )
   Renderer.RenderText2d( m_pFont, 80, 175, "Flat, with texture (should be white)" );
 
   Renderer.RenderText2d( m_pFont, 80, 215, "Flat triangle, no texture, red" );
+
+  Renderer.RenderText2d( m_pFont, 80, 325, "Schlüssel" );
+  Renderer.RenderText2d( m_pFontBig, 200, 325, "Umlaut äöüß" );
+  Renderer.RenderText2d( m_pFontBig2, 200, 385, "Umlaut äöüß" );
 }
 
 
@@ -1468,7 +1472,7 @@ void CXtreme::DisplayFrame( XRenderer& Renderer )
 
     //m_pRenderClass->RenderText2d( m_pFontBig, 20, 20, "HALLO WELT" );
 
-    Renderer.RenderTextureSection2d( 20, 20, pFFont->Letter( 'H' )->TextureSection );
+    Renderer.RenderTextureSection2d( 20, 20, pFFont->Letter( GR::UTF8Char( 'H' ) )->TextureSection );
     //m_pFontBig->DrawLetter( 20, 20, 'H', 0xffffffff );
 
     Display2LightScene( Renderer );
@@ -2062,6 +2066,7 @@ void CXtreme::UpdatePerDisplayFrame( const float fElapsedTime )
   {
     m_pFont = NULL;
     m_pFontBig = NULL;
+    m_pFontBig2 = NULL;
 
     SwitchRenderer();
     if ( m_NextRenderer == "null" )
@@ -2285,6 +2290,7 @@ void CXtreme::RestoreData()
 
       m_pFont = m_pRenderClass->LoadFontSquare( CMisc::AppPath( "font.tga" ).c_str(), XFont::FLF_SQUARED_ONE_FONT | XFont::FLF_ALPHA_BIT );
       m_pFontBig = m_pRenderClass->LoadFont( CMisc::AppPath( "Baveuse 3D40c.igf" ), 0xffff00ff );
+      m_pFontBig2 = m_pRenderClass->LoadFont( CMisc::AppPath( "Armor Piercing30.igf" ), 0xffff00ff );
 
       /*
       m_pVB = m_pRenderClass->CreateVertexBuffer( IVertexBuffer::VFF_XYZ | IVertexBuffer::VFF_DIFFUSE | IVertexBuffer::VFF_TEXTURECOORD );
@@ -2394,7 +2400,7 @@ HBITMAP ScreenGrab()
 
    //GetRenderTargetSurface.
    if(FAILED(m_pd3dDevice->GetRenderTarget(0, &pRenderTargetSurface)))
-	   return NULL;
+     return NULL;
 
    IDirect3D9*    m_pD3D;
 
@@ -2410,26 +2416,26 @@ HBITMAP ScreenGrab()
 
    //GetDestinationTargetSurface
    if(FAILED(m_pd3dDevice->CreateOffscreenPlainSurface((rc.right - rc.left),
-	                                               (rc.bottom - rc.top),
+                                                 (rc.bottom - rc.top),
                                                    d3dDipMode.Format,
-												   D3DPOOL_SYSTEMMEM,
+                           D3DPOOL_SYSTEMMEM,
                                                    &pDestinationTargetSurface,
-												   NULL)))
-												   return NULL;
+                           NULL)))
+                           return NULL;
 
    dh::Log( "f %x", GetLastError() );
 
    //copy RenderTargetSurface -> DestTarget
    if(FAILED(m_pd3dDevice->GetRenderTargetData(pRenderTargetSurface, pDestinationTargetSurface)))
-	   return NULL;
+     return NULL;
 
    dh::Log( "g %x", GetLastError() );
 
    //Create a lock on the DestinationTargetSurface
    D3DLOCKED_RECT lockedRC;
    if(FAILED(pDestinationTargetSurface->LockRect(&lockedRC,
-	                                   NULL,
-									   D3DLOCK_NO_DIRTY_UPDATE|D3DLOCK_NOSYSLOCK|D3DLOCK_READONLY)))
+                                     NULL,
+                     D3DLOCK_NO_DIRTY_UPDATE|D3DLOCK_NOSYSLOCK|D3DLOCK_READONLY)))
    return NULL;
 
    dh::Log( "h %x", GetLastError() );
@@ -2468,11 +2474,11 @@ HBITMAP ScreenGrab()
 
    //Create DIB Section -> this returns a valid pointer to use in pData
    hbm = CreateDIBSection(hCaptureDC,
-	                    pbmpInfo,//&bmpInfo,
-			            DIB_PAL_COLORS,
-		                (void**)&pData,
-			            NULL,
-			            NULL);
+                      pbmpInfo,//&bmpInfo,
+                  DIB_PAL_COLORS,
+                    (void**)&pData,
+                  NULL,
+                  NULL);
 
    delete[] pbmpInfo;
 
@@ -2496,7 +2502,7 @@ HBITMAP ScreenGrab()
 
    //Unlock the rectangle
    if(FAILED(pDestinationTargetSurface->UnlockRect()))
-		return NULL;
+    return NULL;
  
 
    dh::Log( "l %x", GetLastError() );

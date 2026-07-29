@@ -42,6 +42,7 @@ class CXtreme : public XFrameApp
 
     XFont*              m_pFont;
     XFont*              m_pFontBig;
+    XFont*              m_pFontBig2;
 
     float               m_fX;
 

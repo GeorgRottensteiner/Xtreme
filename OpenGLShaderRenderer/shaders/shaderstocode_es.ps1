@@ -4,17 +4,26 @@ if ( [IO.Directory]::Exists( "d:\privat\projekte" ) )
   $projectBasePath = "d:/privat/projekte";
 }
 echo ( "Project base path: " + $projectBasePath )
-$fileEntries = [IO.Directory]::EnumerateFiles( $projectBasePath + "/Xtreme/OpenGLShaderRenderer/shaders", "*.glsl" ); 
+$fileEntries = [IO.Directory]::EnumerateFiles( $projectBasePath + "/Xtreme/OpenGLShaderRenderer/shaders", "*_es.glsl" ); 
 
-[IO.File]::Delete( "p:/common/Xtreme/OpenGLShader/shadercode.inl" );
+[IO.File]::Delete( "p:/common/Xtreme/OpenGLShader/shadercodees.inl" );
 
-$resultContent = "";
+echo ( "Processing ES shaders..." )
+
+$resultContentES = "";
 $lineBreak = "`n";  
 
 foreach( $fileName in $fileEntries ) 
 { 
+  $dir = [System.IO.Path]::GetDirectoryName($fileName);
+  $nameWithoutExt = [System.IO.Path]::GetFileNameWithoutExtension($fileName);
+  if ( !$nameWithoutExt.EndsWith( "_es" ) )
+  {
+    continue;
+  }
+  
   $content = [IO.File]::ReadAllLines( $fileName );
-  $trueFilename = $fileName.Substring( 2, $fileName.Length - 4 - 2 );
+  $trueFilename = $nameWithoutExt;
 
   # deduce vertex format from file name
   $vertexFormat = 0;
@@ -43,7 +52,7 @@ foreach( $fileName in $fileEntries )
     $vertexFormat = $vertexFormat -bor 0x00000100;
   }
 
-  $varName = [IO.Path]::GetFileNameWithoutExtension( $fileName );
+  $varName = $nameWithoutExt.SubString( 0, $nameWithoutExt.Length - 3 );
 
   
   $line = "GR::String  " + $varName + " =" + $lineBreak;
@@ -56,12 +65,9 @@ foreach( $fileName in $fileEntries )
   }
   $line += ";" + $lineBreak + $lineBreak;
 
-
-  $resultContent += $line;
-
+  $resultContentES += $line;
 }
-$resultContentES = $resultContent.Replace( "#version 410 core", "#version 320 es" )
 
-
-[IO.File]::WriteAllText( "P:\Common\Xtreme\OpenGLShader\shadercode.inl", $resultContent )
 [IO.File]::WriteAllText( "P:\Common\Xtreme\OpenGLShader\shadercodees.inl", $resultContentES )
+
+echo ( "...done" )

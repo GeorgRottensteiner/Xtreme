@@ -1,63 +1,62 @@
+#version 410 core
 //from FixedFuncShader.fxh 
 #define FOG_TYPE_NONE            0 
 #define FOG_TYPE_EXP             1 
 #define FOG_TYPE_EXP2            2 
 #define FOG_TYPE_LINEAR          3 
 
-uniform FogConstantBuffer : register( b3 )
+layout(std140) uniform FogConstantBuffer
 {
   //fog settings 
-  int iFogType      = FOG_TYPE_NONE; 
-  float fFogStart   = 10.f; 
-  float fFogEnd     = 25.f; 
-  float fFogDensity = .02f; 
-  float4 vFogColor  = float4(0.0f, 0.0f, 0.0f, 0.0f); 
+  int iFogType;
+  float fFogStart;
+  float fFogEnd;
+  float fFogDensity;
+  vec4 vFogColor;
 };
 
 
 
 // A constant buffer that stores the three basic column-major matrices for composing geometry.
-uniform ModelViewProjectionConstantBuffer : register(b0)
+layout(std140) uniform ModelViewProjectionConstantBuffer
 {
-  matrix model;
-  matrix view;
-  matrix viewIT;
-  matrix projection;
-  matrix ortho2d;
-  matrix textureTransform;
+  mat4x4 model;
+  mat4x4 view;
+  mat4x4 viewIT;
+  mat4x4 projection;
+  mat4x4 ortho2d;
+  mat4x4 textureTransform;
 };
 
 // Per-vertex data used as input to the vertex shader.
 struct VertexShaderInput
 {
-  float3 pos;
-  float4 color;
-  float2 tex;
+  vec3 pos;
+  vec4 color;
+  vec2 tex;
 };
 
 // Per-pixel color data passed through the pixel shader.
 struct PixelShaderInput
 {
-  float4 pos;
-  float2 tex;
-  float4 color;
+  vec4 pos;
+  vec2 tex;
+  vec4 color;
   float  FogFactor;
 };
 
-// Simple shader to do vertex processing on the GPU.
-layout(location = 0) in float3 _vsin_input_pos;
-layout(location = 1) in float4 _vsin_input_color;
-layout(location = 2) in float2 _vsin_input_tex;
-layout(location = 0) out float2 _vsout_main_tex;
-layout(location = 1) out float4 _vsout_main_color;
-layout(location = 2) out float _vsout_main_FogFactor;
+float when_eq(int x, int y) 
+{
+  return 1.0 - abs(sign(x - y));
+}
 
-#define _RETURN_(_RET_VAL_){\
-_SET_GL_POSITION(_RET_VAL_.pos);\
-_vsout_main_tex = _RET_VAL_.tex;\
-_vsout_main_color = _RET_VAL_.color;\
-_vsout_main_FogFactor = _RET_VAL_.FogFactor;\
-return;}
+// Simple shader to do vertex processing on the GPU.
+layout(location = 0) in vec3 _vsin_input_pos;
+layout(location = 1) in vec4 _vsin_input_color;
+layout(location = 2) in vec2 _vsin_input_tex;
+layout(location = 0) out vec2 _vsout_main_tex;
+layout(location = 1) out vec4 _vsout_main_color;
+layout(location = 2) out float _vsout_main_FogFactor;
 
 void main()
 {
@@ -68,41 +67,40 @@ void main()
 
   PixelShaderInput output;
 
-  float4 pos = float4( input.pos, 1.0 );
+  vec4 pos = vec4( input.pos, 1.0 );
 
   // Transform the vertex position into projected space.
-  pos = mul(pos, model);
-  pos = mul(pos, view);
-  pos = mul(pos, projection);
+  pos = pos * model * view * projection;
 
   output.pos = pos;
 
   // pass texture coords
   //output.tex = input.tex;
-  output.tex = mul( float4( input.tex, 0.0, 1.0 ), textureTransform );
+  output.tex = ( vec4( input.tex, 0.0, 1.0 ) * textureTransform ).xy;
   
   //apply fog    
-    // fog does nothing here
-  float4 P = mul( float4( input.pos, 1.0 ), model ); //position in view space 
-  P = mul( P, view );
+  // fog does nothing here
+  vec4 P = vec4( input.pos, 1.0 ) * model;
+  P = P * view;
   
   float  d = 0.0;
-  //d = length( P );
   d = P.z;
-  float fog = 1. * ( iFogType == FOG_TYPE_NONE )              
+  float fog = 1. * when_eq( iFogType, FOG_TYPE_NONE )              
              + 1. / exp( d * fFogDensity )                 
-             * ( iFogType == FOG_TYPE_EXP )              
+             * when_eq( iFogType, FOG_TYPE_EXP )              
              + 1. / exp( pow( d * fFogDensity, 2 ) )                 
-             * ( iFogType == FOG_TYPE_EXP2 )              
-             + saturate( ( fFogEnd - d ) / ( fFogEnd - fFogStart ) )                 
-           * ( iFogType == FOG_TYPE_LINEAR );   
+             * when_eq( iFogType, FOG_TYPE_EXP2 )              
+             + clamp( ( fFogEnd - d ) / ( fFogEnd - fFogStart ), 0.0, 1.0 )
+           * when_eq( iFogType, FOG_TYPE_LINEAR );   
            
-  output.FogFactor = 1.0 - fog;           
-  //output.FogFactor = fog;           
+  output.FogFactor = 1.0 - fog;                  
 
 
   // Pass the color through without modification.
   output.color = input.color;
 
-  _RETURN_( output)
+  gl_Position = output.pos;
+  _vsout_main_tex = output.tex;
+  _vsout_main_color = output.color;
+  _vsout_main_FogFactor = output.FogFactor;
 }

@@ -617,7 +617,7 @@ bool CDirectSoundOgg::SetVolume( int Volume )
 
 
 
-bool CDirectSoundOgg::LoadMusic( const GR::Char* FileName )
+bool CDirectSoundOgg::LoadMusic( const char* FileName )
 {
   Stop();
   Cleanup();

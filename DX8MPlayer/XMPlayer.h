@@ -34,7 +34,7 @@ class XMPlayer : public System::ThreadBase,
 
     bool                    IsPlaying();
 
-    bool                    LoadMusic( const GR::Char* FileName );
+    bool                    LoadMusic( const char* FileName );
     bool                    LoadMusic( IIOStream& Stream );
     void                    Unload();
 

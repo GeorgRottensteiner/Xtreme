@@ -81,7 +81,7 @@ class CDirectSoundOgg  : public XMusic
     virtual bool            SetVolume( int Volume );
     virtual int             Volume();
 
-    virtual bool            LoadMusic( const GR::Char* FileName );
+    virtual bool            LoadMusic( const char* FileName );
     virtual bool            LoadMusic( IIOStream& Stream );
 
     virtual ~CDirectSoundOgg();

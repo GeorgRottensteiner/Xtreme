@@ -14352,7 +14352,7 @@ int XMPlayer::Run()
 
 
 
-bool XMPlayer::LoadMusic( const GR::Char* szFileName )
+bool XMPlayer::LoadMusic( const char* szFileName )
 {
   if ( IsPlaying() )
   {
